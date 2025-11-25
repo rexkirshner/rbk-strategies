@@ -26,6 +26,24 @@ const currentYear = new Date().getFullYear();
         <a href="mailto:contact@rbkstrategies.com" class="footer-link">
           contact@rbkstrategies.com
         </a>
+        <div class="social-links">
+          <a
+            href="https://rexkirshner.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-link"
+          >
+            Personal Website
+          </a>
+          <a
+            href="https://www.linkedin.com/in/rexkirshner/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-link"
+          >
+            LinkedIn
+          </a>
+        </div>
       </div>
     </div>
 
@@ -81,7 +99,16 @@ const currentYear = new Date().getFullYear();
   .footer-links {
     display: flex;
     flex-direction: column;
-    gap: var(--space-md);
+    gap: var(--space-lg);
+    align-items: flex-end;
+  }
+
+  .social-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding-top: var(--space-md);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .footer-link {
@@ -125,6 +152,14 @@ const currentYear = new Date().getFullYear();
     .footer-content {
       flex-direction: column;
       gap: var(--space-xl);
+    }
+
+    .footer-links {
+      align-items: flex-start;
+    }
+
+    .social-links {
+      align-items: flex-start;
     }
 
     .footer-bottom {

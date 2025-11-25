@@ -33,9 +33,9 @@ const services = [
 
 <Section id="services" spacing="xl" background="light">
   <Container>
-    <div class="services-header">
-      <h2 class="services-title">Services</h2>
-      <p class="services-subtitle">
+    <div class="section-header">
+      <h2 class="section-title">Services</h2>
+      <p class="section-subtitle">
         Comprehensive consulting services tailored to your business needs
       </p>
     </div>
@@ -47,30 +47,10 @@ const services = [
 </Section>
 
 <style>
-  .services-header {
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto var(--space-4xl) auto;
-  }
-
-  .services-title {
-    font-size: var(--font-size-3xl);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
-    margin-bottom: var(--space-md);
-  }
-
-  .services-subtitle {
-    font-size: var(--font-size-lg);
-    color: var(--color-text-light);
-    margin-bottom: 0;
-  }
-
   .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: var(--space-2xl);
-    margin-top: var(--space-3xl);
   }
 
   /* Ensure consistent card heights */
@@ -80,14 +60,6 @@ const services = [
 
   /* Responsive */
   @media (max-width: 768px) {
-    .services-title {
-      font-size: var(--font-size-2xl);
-    }
-
-    .services-subtitle {
-      font-size: var(--font-size-md);
-    }
-
     .services-grid {
       grid-template-columns: 1fr;
       gap: var(--space-xl);

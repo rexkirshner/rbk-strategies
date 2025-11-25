@@ -12,9 +12,9 @@ import Button from '../Button.astro';
 
 <Section id="contact" spacing="xl" background="light">
   <Container size="lg">
-    <div class="contact-header">
-      <h2 class="contact-title">Let's Work Together</h2>
-      <p class="contact-subtitle">
+    <div class="section-header">
+      <h2 class="section-title">Let's Work Together</h2>
+      <p class="section-subtitle">
         Ready to optimize your operations, strengthen your finances, or transform your technology?
         Get in touch to discuss how we can help your business grow.
       </p>
@@ -61,26 +61,6 @@ import Button from '../Button.astro';
 </Section>
 
 <style>
-  .contact-header {
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto var(--space-4xl) auto;
-  }
-
-  .contact-title {
-    font-size: var(--font-size-3xl);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
-    margin-bottom: var(--space-md);
-  }
-
-  .contact-subtitle {
-    font-size: var(--font-size-lg);
-    color: var(--color-text-light);
-    margin-bottom: 0;
-    line-height: var(--line-height-relaxed);
-  }
-
   .contact-methods {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -144,14 +124,6 @@ import Button from '../Button.astro';
 
   /* Responsive */
   @media (max-width: 768px) {
-    .contact-title {
-      font-size: var(--font-size-2xl);
-    }
-
-    .contact-subtitle {
-      font-size: var(--font-size-md);
-    }
-
     .contact-methods {
       grid-template-columns: 1fr;
       gap: var(--space-xl);

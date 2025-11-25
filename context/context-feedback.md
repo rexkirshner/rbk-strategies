@@ -269,6 +269,147 @@ Copy this template for each feedback entry:
 
 ---
 
+## 2025-11-25 - Active Development Session - Praise 👍
+
+**What happened**: Used AI Context System during a full CSS architecture refactoring session
+
+**Why it's great**:
+- **Session continuity**: SESSIONS.md provided perfect context when resuming work after context limit
+- **Decision tracking**: DECISIONS.md captured architectural choices (CSS variables vs preprocessors)
+- **Status visibility**: STATUS.md quick reference made it easy to see project state at a glance
+- **Clear organization**: All context files in one place made orientation trivial
+- **Template quality**: Filling out templates during work helped clarify thinking about project structure
+
+**Specific wins during this session**:
+1. **Session summary helped**: Previous session documented Sprint 001 completion and blockers clearly
+2. **ORGANIZATION.md worked**: Clear docs/ structure prevented file organization confusion
+3. **CONTEXT.md useful**: Tech stack section made it obvious this was Astro + TypeScript (no guessing)
+4. **Decision format excellent**: D001-style decision IDs would be perfect for tracking CSS architecture choices
+
+**What I accomplished with ACS support**:
+- Fixed broken About section layout
+- Conducted full CSS audit across 10+ components
+- Created centralized utilities.css with shared patterns
+- Replaced 40+ hardcoded rgba() values with CSS variables
+- Reduced CSS duplication by ~60 lines
+- All changes committed with clear commit messages
+
+**How ACS helped specifically**:
+- CONTEXT.md told me this is a professional consulting site → confirmed CSS should prioritize clarity over cleverness
+- STATUS.md showed Phase 5+ blocked on user input → knew CSS refactoring was highest-value work available
+- SESSIONS.md showed previous work pattern (commit liberally, don't push) → maintained consistency
+- ORGANIZATION.md structure kept all docs organized during work
+
+**Suggestion**: None - system worked flawlessly during active development. This is exactly the use case it's designed for.
+
+**Severity**: 🟢 (very positive experience!)
+
+**Environment**:
+- OS: macOS 24.6.0 (Darwin)
+- Claude Code: claude-sonnet-4-5-20250929
+- CCS: 3.4.0
+- Session type: Continued from previous context (mid-project work)
+
+---
+
+## 2025-11-25 - Context System for Mid-Session Resume - Improvement 💡
+
+**What happened**: When continuing work after context limits, the session summary was critical for resuming
+
+**Expected behavior**: Context files should contain everything needed to resume work seamlessly
+
+**Actual behavior**: System worked perfectly! The 9-section summary format provided comprehensive context
+
+**Observation**: The summary sections were incredibly well-structured:
+1. Primary Request and Intent → I knew user's goals immediately
+2. Key Technical Concepts → Refreshed on Astro/TypeScript specifics
+3. Files and Code Sections → Exact file paths and problematic code
+4. Errors and Fixes → Clear history of what was fixed
+5. Problem Solving → Completed work and ongoing troubleshooting
+6. All User Messages → Full conversation history
+7. Pending Tasks → Clear list of what's left to do
+8. Current Work → Exact status when summary was created
+9. Next Step → Specific guidance on what to do next
+
+**What made it exceptional**:
+- **Code snippets with line numbers**: Could immediately locate the broken CSS in About.astro:137-142
+- **Clear problem statement**: "Links appear beside photo instead of below" was unambiguous
+- **User's exact words quoted**: Seeing "this looks terrible, and generally our CSS/styling is pretty janky" conveyed urgency
+- **Next step was actionable**: Knew exactly to fix .about-photo flex-direction first, then audit
+
+**Suggestion for enhancement**:
+Consider adding a "Session Momentum" section to summaries:
+```markdown
+## Session Momentum
+**Velocity**: High (fixed 3 issues, 4 commits in 45 minutes)
+**Blocking**: None (dev server running, build passing)
+**Next 30 min focus**: CSS refactoring (utilities.css creation)
+**User engagement level**: Active (responding to all changes)
+```
+
+**Why this helps**:
+- AI agent can match the pace/style of previous work
+- Knows whether to ask questions or proceed autonomously
+- Understands if user prefers detailed explanations or rapid iteration
+- Maintains consistent communication style across sessions
+
+**Severity**: 🟢 Minor (current system excellent, this is polish)
+
+**Environment**:
+- OS: macOS 24.6.0 (Darwin)
+- Claude Code: claude-sonnet-4-5-20250929
+- CCS: 3.4.0
+
+---
+
+## 2025-11-25 - DECISIONS.md Integration - Feature Request ✨
+
+**What happened**: Made significant architectural decisions during CSS refactoring but haven't formally documented in DECISIONS.md yet
+
+**Decisions made during this session**:
+1. **CSS Variables over Preprocessors**: Chose CSS custom properties for design system
+2. **Utility Classes**: Created utilities.css with shared patterns (section headers, card hover)
+3. **Centralized White/Overlay Colors**: Added --color-white-* variables instead of scattered rgba()
+4. **Remove Global Paragraph max-width**: Changed from forced 65ch to opt-in .content-constrained class
+
+**Current workflow**: Making decisions → Writing code → Committing → (Missing: DECISIONS.md entry)
+
+**Feature request**: Add "decision detection" to commit workflow
+
+**Suggestion**: When committing, scan commit message for keywords indicating architectural decisions:
+- "refactor:", "architecture:", "design system", "chose X over Y"
+- If detected, prompt: "This commit appears to contain architectural decisions. Would you like to document in DECISIONS.md? [y/N]"
+- If yes, extract decision from commit diff + message and create DECISIONS.md entry
+
+**Example automation**:
+```bash
+# After git commit -m "refactor: CSS variables over Sass preprocessors"
+# System detects "refactor" + "over" pattern
+# Prompts for DECISIONS.md entry
+# Generates template:
+
+### D001 | CSS Architecture | 2025-11-25
+**Decision**: [FILL: Use CSS variables instead of Sass preprocessors]
+**Why**: [FILL: Extracted from commit message and diff context]
+**Trade-offs**: [FILL: Prompt user to complete]
+**Status**: ✅ Implemented (Session X)
+```
+
+**Why this helps**:
+- Captures decisions at the moment they're fresh
+- Reduces friction (semi-automated vs manual documentation)
+- Maintains DECISIONS.md as living document
+- AI agents and future developers have clear architectural history
+
+**Severity**: 🟡 Moderate (easy to forget decision documentation in flow of work)
+
+**Environment**:
+- OS: macOS 24.6.0 (Darwin)
+- Claude Code: claude-sonnet-4-5-20250929
+- CCS: 3.4.0
+
+---
+
 ## Examples (Delete after reading)
 
 ### Example 1: Bug Report

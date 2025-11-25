@@ -51,6 +51,24 @@ import Section from '../Section.astro';
           width="800"
           height="1066"
         />
+        <div class="profile-links">
+          <a
+            href="https://rexkirshner.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="profile-link"
+          >
+            Rex Kirshner
+          </a>
+          <a
+            href="https://www.linkedin.com/in/rexkirshner/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="profile-link"
+          >
+            LinkedIn
+          </a>
+        </div>
       </div>
     </div>
   </Container>
@@ -134,6 +152,29 @@ import Section from '../Section.astro';
   .profile-image:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-xl);
+  }
+
+  .profile-links {
+    display: flex;
+    gap: var(--space-lg);
+    justify-content: center;
+    margin-top: var(--space-lg);
+  }
+
+  .profile-link {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-secondary);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--border-radius-sm);
+  }
+
+  .profile-link:hover {
+    color: var(--color-secondary-dark);
+    background-color: var(--color-bg);
+    text-decoration: underline;
   }
 
   /* Responsive */

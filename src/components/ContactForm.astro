@@ -1,0 +1,439 @@
+---
+/**
+ * Contact Form Component
+ *
+ * Handles form submission to the /api/contact endpoint.
+ * Includes client-side validation, loading states, and error handling.
+ *
+ * Features:
+ * - Client-side validation before submission
+ * - Loading, success, and error states
+ * - Accessible form with proper labels and ARIA attributes
+ * - Matches site design system
+ * - Modular provider architecture (see src/lib/form-providers/)
+ */
+
+import Button from './Button.astro';
+---
+
+<div class="contact-form-wrapper">
+  <form id="contact-form" class="contact-form" novalidate>
+    <!-- Name Field -->
+    <div class="form-group">
+      <label for="name" class="form-label">
+        Name <span class="required">*</span>
+      </label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        class="form-input"
+        required
+        aria-required="true"
+        aria-describedby="name-error"
+        placeholder="Your name"
+      />
+      <span id="name-error" class="form-error" role="alert"></span>
+    </div>
+
+    <!-- Email Field -->
+    <div class="form-group">
+      <label for="email" class="form-label">
+        Email <span class="required">*</span>
+      </label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        class="form-input"
+        required
+        aria-required="true"
+        aria-describedby="email-error"
+        placeholder="your.email@example.com"
+      />
+      <span id="email-error" class="form-error" role="alert"></span>
+    </div>
+
+    <!-- Company Field (Optional) -->
+    <div class="form-group">
+      <label for="company" class="form-label">Company</label>
+      <input
+        type="text"
+        id="company"
+        name="company"
+        class="form-input"
+        aria-describedby="company-error"
+        placeholder="Your company (optional)"
+      />
+      <span id="company-error" class="form-error" role="alert"></span>
+    </div>
+
+    <!-- Message Field -->
+    <div class="form-group">
+      <label for="message" class="form-label">
+        Message <span class="required">*</span>
+      </label>
+      <textarea
+        id="message"
+        name="message"
+        class="form-textarea"
+        required
+        aria-required="true"
+        aria-describedby="message-error"
+        placeholder="Tell us about your needs..."
+        rows="6"
+      ></textarea>
+      <span id="message-error" class="form-error" role="alert"></span>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary btn-lg submit-button">
+        <span class="button-text">Send Message</span>
+        <span class="button-loading" hidden>
+          <span class="spinner"></span>
+          Sending...
+        </span>
+      </button>
+    </div>
+
+    <!-- Form Messages -->
+    <div id="form-message" class="form-message" role="status" aria-live="polite"></div>
+  </form>
+</div>
+
+<script>
+  // Form state
+  type FormState = 'idle' | 'submitting' | 'success' | 'error';
+
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const submitButton = form?.querySelector('.submit-button') as HTMLButtonElement;
+  const buttonText = submitButton?.querySelector('.button-text') as HTMLElement;
+  const buttonLoading = submitButton?.querySelector('.button-loading') as HTMLElement;
+  const formMessage = document.getElementById('form-message') as HTMLElement;
+
+  let currentState: FormState = 'idle';
+
+  /**
+   * Set form state
+   */
+  function setState(state: FormState) {
+    currentState = state;
+
+    // Update button
+    if (submitButton) {
+      submitButton.disabled = state === 'submitting';
+
+      if (buttonText && buttonLoading) {
+        if (state === 'submitting') {
+          buttonText.hidden = true;
+          buttonLoading.hidden = false;
+        } else {
+          buttonText.hidden = false;
+          buttonLoading.hidden = true;
+        }
+      }
+    }
+
+    // Clear message for idle state
+    if (state === 'idle' && formMessage) {
+      formMessage.textContent = '';
+      formMessage.className = 'form-message';
+    }
+  }
+
+  /**
+   * Show message
+   */
+  function showMessage(message: string, type: 'success' | 'error') {
+    if (formMessage) {
+      formMessage.textContent = message;
+      formMessage.className = `form-message form-message-${type}`;
+    }
+  }
+
+  /**
+   * Clear field error
+   */
+  function clearFieldError(fieldName: string) {
+    const errorElement = document.getElementById(`${fieldName}-error`);
+    if (errorElement) {
+      errorElement.textContent = '';
+    }
+  }
+
+  /**
+   * Show field error
+   */
+  function showFieldError(fieldName: string, message: string) {
+    const errorElement = document.getElementById(`${fieldName}-error`);
+    if (errorElement) {
+      errorElement.textContent = message;
+    }
+  }
+
+  /**
+   * Clear all errors
+   */
+  function clearAllErrors() {
+    ['name', 'email', 'company', 'message'].forEach(clearFieldError);
+  }
+
+  /**
+   * Validate email
+   */
+  function isValidEmail(email: string): boolean {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
+  /**
+   * Validate form
+   */
+  function validateForm(): boolean {
+    clearAllErrors();
+    let isValid = true;
+
+    const nameInput = form.querySelector('#name') as HTMLInputElement;
+    const emailInput = form.querySelector('#email') as HTMLInputElement;
+    const messageInput = form.querySelector('#message') as HTMLTextAreaElement;
+
+    // Validate name
+    if (!nameInput.value.trim()) {
+      showFieldError('name', 'Name is required');
+      isValid = false;
+    } else if (nameInput.value.trim().length < 2) {
+      showFieldError('name', 'Name must be at least 2 characters');
+      isValid = false;
+    }
+
+    // Validate email
+    if (!emailInput.value.trim()) {
+      showFieldError('email', 'Email is required');
+      isValid = false;
+    } else if (!isValidEmail(emailInput.value.trim())) {
+      showFieldError('email', 'Please enter a valid email address');
+      isValid = false;
+    }
+
+    // Validate message
+    if (!messageInput.value.trim()) {
+      showFieldError('message', 'Message is required');
+      isValid = false;
+    } else if (messageInput.value.trim().length < 10) {
+      showFieldError('message', 'Message must be at least 10 characters');
+      isValid = false;
+    }
+
+    return isValid;
+  }
+
+  /**
+   * Handle form submission
+   */
+  async function handleSubmit(event: Event) {
+    event.preventDefault();
+
+    // Validate
+    if (!validateForm()) {
+      return;
+    }
+
+    // Get form data
+    const formData = new FormData(form);
+    const data = {
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      company: formData.get('company') as string | undefined,
+      message: formData.get('message') as string,
+    };
+
+    // Set submitting state
+    setState('submitting');
+
+    try {
+      // Submit to API
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setState('success');
+        showMessage(result.message, 'success');
+        form.reset();
+      } else {
+        setState('error');
+        showMessage(result.message, 'error');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setState('error');
+      showMessage(
+        'An error occurred sending your message. Please try again or email us directly at contact@rbkstrategies.com.',
+        'error'
+      );
+    }
+  }
+
+  /**
+   * Clear errors on input
+   */
+  function setupInputListeners() {
+    const inputs = form.querySelectorAll('input, textarea');
+    inputs.forEach((input) => {
+      input.addEventListener('input', () => {
+        const fieldName = (input as HTMLInputElement).name;
+        clearFieldError(fieldName);
+        if (formMessage && currentState !== 'idle') {
+          setState('idle');
+        }
+      });
+    });
+  }
+
+  // Setup
+  if (form) {
+    form.addEventListener('submit', handleSubmit);
+    setupInputListeners();
+  }
+</script>
+
+<style>
+  .contact-form-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .form-label {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+  }
+
+  .required {
+    color: var(--color-accent);
+  }
+
+  .form-input,
+  .form-textarea {
+    width: 100%;
+    padding: var(--space-md);
+    font-size: var(--font-size-base);
+    font-family: var(--font-family-base);
+    color: var(--color-text);
+    background-color: var(--color-bg-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    transition: all var(--transition-fast);
+  }
+
+  .form-input:focus,
+  .form-textarea:focus {
+    outline: none;
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 3px rgba(45, 125, 210, 0.1);
+  }
+
+  .form-input::placeholder,
+  .form-textarea::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 150px;
+  }
+
+  .form-error {
+    font-size: var(--font-size-sm);
+    color: var(--color-accent-dark);
+    min-height: 1.2em;
+  }
+
+  .form-actions {
+    margin-top: var(--space-md);
+  }
+
+  .submit-button {
+    width: 100%;
+    position: relative;
+  }
+
+  .submit-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .button-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+  }
+
+  .spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .form-message {
+    padding: var(--space-md);
+    border-radius: var(--border-radius-md);
+    font-size: var(--font-size-base);
+    text-align: center;
+    margin-top: var(--space-lg);
+  }
+
+  .form-message-success {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+  }
+
+  .form-message-error {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .contact-form-wrapper {
+      max-width: 100%;
+    }
+
+    .form-input,
+    .form-textarea {
+      font-size: var(--font-size-base);
+    }
+  }
+</style>

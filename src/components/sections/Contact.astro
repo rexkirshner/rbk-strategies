@@ -8,6 +8,7 @@
 import Container from '../Container.astro';
 import Section from '../Section.astro';
 import Button from '../Button.astro';
+import ContactForm from '../ContactForm.astro';
 ---
 
 <Section id="contact" spacing="xl" background="light">
@@ -36,8 +37,7 @@ import Button from '../Button.astro';
         <div class="method-icon">📝</div>
         <h3 class="method-title">Contact Form</h3>
         <p class="method-description">Fill out a form with details about your needs.</p>
-        <Button href="#form" variant="secondary" size="md"> Open Form </Button>
-        <p class="method-note">Form integration: Formspree or Cloudflare Workers (pending)</p>
+        <Button href="#contact-form-section" variant="secondary" size="md"> Open Form </Button>
       </div>
 
       <!-- Calendar Booking -->
@@ -51,11 +51,13 @@ import Button from '../Button.astro';
       </div>
     </div>
 
-    <!-- Note about pending form integration -->
-    <div class="contact-note">
-      <p>
-        <strong>Note:</strong> Contact form integration pending (Formspree or Cloudflare Workers configuration needed). Email and calendar booking are fully functional.
+    <!-- Contact Form Section -->
+    <div id="contact-form-section" class="form-section">
+      <h3 class="form-section-title">Send Us a Message</h3>
+      <p class="form-section-subtitle">
+        Fill out the form below and we'll get back to you within 24 hours.
       </p>
+      <ContactForm />
     </div>
   </Container>
 </Section>
@@ -109,17 +111,28 @@ import Button from '../Button.astro';
     font-style: italic;
   }
 
-  .contact-note {
-    background-color: var(--color-bg-dark);
-    border-left: 4px solid var(--color-accent);
-    padding: var(--space-lg);
-    border-radius: var(--border-radius-sm);
+  .form-section {
+    margin-top: var(--space-5xl);
+    padding-top: var(--space-4xl);
+    border-top: 2px solid var(--color-border-light);
   }
 
-  .contact-note p {
-    font-size: var(--font-size-sm);
+  .form-section-title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: var(--space-md);
+  }
+
+  .form-section-subtitle {
+    font-size: var(--font-size-base);
     color: var(--color-text-light);
-    margin: 0;
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   /* Responsive */

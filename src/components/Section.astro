@@ -1,0 +1,120 @@
+---
+/**
+ * Section Component
+ *
+ * Consistent vertical spacing wrapper for page sections
+ *
+ * Props:
+ * @param id - Section ID for anchor links
+ * @param spacing - Vertical padding size (sm, md, lg, xl)
+ * @param background - Background color variant (default, light, dark, primary)
+ * @param class - Additional CSS classes
+ */
+
+interface Props {
+  id?: string;
+  spacing?: 'sm' | 'md' | 'lg' | 'xl';
+  background?: 'default' | 'light' | 'dark' | 'primary';
+  class?: string;
+}
+
+const {
+  id,
+  spacing = 'lg',
+  background = 'default',
+  class: className = '',
+} = Astro.props;
+
+const classes = `section section-${spacing} section-bg-${background} ${className}`.trim();
+---
+
+<section id={id} class={classes}>
+  <slot />
+</section>
+
+<style>
+  .section {
+    width: 100%;
+  }
+
+  /* Spacing variants */
+  .section-sm {
+    padding-top: var(--space-2xl);
+    padding-bottom: var(--space-2xl);
+  }
+
+  .section-md {
+    padding-top: var(--space-3xl);
+    padding-bottom: var(--space-3xl);
+  }
+
+  .section-lg {
+    padding-top: var(--space-4xl);
+    padding-bottom: var(--space-4xl);
+  }
+
+  .section-xl {
+    padding-top: var(--space-5xl);
+    padding-bottom: var(--space-5xl);
+  }
+
+  /* Background variants */
+  .section-bg-default {
+    background-color: var(--color-bg-white);
+  }
+
+  .section-bg-light {
+    background-color: var(--color-bg);
+  }
+
+  .section-bg-dark {
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  .section-bg-dark h1,
+  .section-bg-dark h2,
+  .section-bg-dark h3,
+  .section-bg-dark h4,
+  .section-bg-dark h5,
+  .section-bg-dark h6 {
+    color: white;
+  }
+
+  .section-bg-primary {
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  .section-bg-primary h1,
+  .section-bg-primary h2,
+  .section-bg-primary h3,
+  .section-bg-primary h4,
+  .section-bg-primary h5,
+  .section-bg-primary h6 {
+    color: white;
+  }
+
+  /* Responsive spacing - reduce on mobile */
+  @media (max-width: 768px) {
+    .section-sm {
+      padding-top: var(--space-xl);
+      padding-bottom: var(--space-xl);
+    }
+
+    .section-md {
+      padding-top: var(--space-2xl);
+      padding-bottom: var(--space-2xl);
+    }
+
+    .section-lg {
+      padding-top: var(--space-3xl);
+      padding-bottom: var(--space-3xl);
+    }
+
+    .section-xl {
+      padding-top: var(--space-4xl);
+      padding-bottom: var(--space-4xl);
+    }
+  }
+</style>

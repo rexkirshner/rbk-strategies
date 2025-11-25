@@ -1,0 +1,69 @@
+---
+/**
+ * Container Component
+ *
+ * Max-width wrapper with responsive padding
+ *
+ * Props:
+ * @param size - Container max-width (sm, md, lg, xl, 2xl)
+ * @param class - Additional CSS classes
+ */
+
+interface Props {
+  size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+  class?: string;
+}
+
+const { size = 'xl', class: className = '' } = Astro.props;
+const classes = `container container-${size} ${className}`.trim();
+---
+
+<div class={classes}>
+  <slot />
+</div>
+
+<style>
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
+  }
+
+  /* Size variants */
+  .container-sm {
+    max-width: var(--container-sm);
+  }
+
+  .container-md {
+    max-width: var(--container-md);
+  }
+
+  .container-lg {
+    max-width: var(--container-lg);
+  }
+
+  .container-xl {
+    max-width: var(--container-xl);
+  }
+
+  .container-2xl {
+    max-width: var(--container-2xl);
+  }
+
+  /* Responsive padding */
+  @media (max-width: 768px) {
+    .container {
+      padding-left: var(--space-md);
+      padding-right: var(--space-md);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      padding-left: var(--space-sm);
+      padding-right: var(--space-sm);
+    }
+  }
+</style>

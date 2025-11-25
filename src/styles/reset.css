@@ -1,0 +1,144 @@
+/**
+ * Modern CSS Reset
+ * Based on Josh Comeau's Custom CSS Reset
+ * https://www.joshwcomeau.com/css/custom-css-reset/
+ */
+
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*
+  2. Remove default margin and padding
+*/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/*
+  3. Allow percentage-based heights in the application
+*/
+html,
+body {
+  height: 100%;
+}
+
+/*
+  4. Add accessible line-height
+  5. Improve text rendering
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*
+  6. Improve media defaults
+*/
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/*
+  7. Remove built-in form typography styles
+*/
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/*
+  8. Avoid text overflows
+*/
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/*
+  9. Create a root stacking context
+*/
+#root,
+#__next,
+#__astro {
+  isolation: isolate;
+}
+
+/*
+  10. Remove list styles
+*/
+ul,
+ol {
+  list-style: none;
+}
+
+/*
+  11. Reset button styles
+*/
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/*
+  12. Reset link styles
+*/
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/*
+  13. Make sure textareas without rows attribute are not tiny
+*/
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/*
+  14. Remove spacing around iframes
+*/
+iframe {
+  border: 0;
+}
+
+/*
+  15. Smooth scrolling for anchor links
+*/
+html {
+  scroll-behavior: smooth;
+}
+
+/*
+  16. Reduce motion for users who prefer it
+*/
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

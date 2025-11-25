@@ -5,6 +5,7 @@
 
 @import './variables.css';
 @import './reset.css';
+@import './utilities.css';
 
 /* Import Inter font from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -70,7 +71,6 @@ h6 {
 
 p {
   margin-bottom: var(--space-md);
-  max-width: var(--content-max-width);
 }
 
 /* Responsive typography */

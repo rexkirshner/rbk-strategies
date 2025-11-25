@@ -38,6 +38,14 @@
   --color-bg-white: #FFFFFF;
   --color-bg-dark: #E8E9EB;
 
+  /* White and Overlays */
+  --color-white: #FFFFFF;
+  --color-white-90: rgba(255, 255, 255, 0.9);
+  --color-white-80: rgba(255, 255, 255, 0.8);
+  --color-white-70: rgba(255, 255, 255, 0.7);
+  --color-white-20: rgba(255, 255, 255, 0.2);
+  --color-bg-overlay: rgba(248, 249, 250, 0.95);
+
   /* Border Colors */
   --color-border: #D1D5DB;
   --color-border-light: #E5E7EB;
@@ -163,4 +171,16 @@
  * ✓ Secondary (#2D7DD2) on White: 4.9:1
  * ✓ Accent (#F4A261) on Primary: 4.6:1
  * ✓ Text (#1A1A2E) on White: 14.8:1
+ */
+
+/**
+ * Standard Responsive Breakpoints:
+ *
+ * Note: CSS custom properties cannot be used in media queries,
+ * but these are the standard breakpoints used throughout the project.
+ *
+ * @media (max-width: 480px)  - Extra small mobile devices
+ * @media (max-width: 768px)  - Tablets and small screens
+ * @media (max-width: 1024px) - Small laptops
+ * @media (max-width: 1440px) - Standard laptops
  */

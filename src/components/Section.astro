@@ -67,9 +67,10 @@ const classes = `section section-${spacing} section-bg-${background} ${className
     background-color: var(--color-bg);
   }
 
-  .section-bg-dark {
+  .section-bg-dark,
+  .section-bg-primary {
     background-color: var(--color-primary);
-    color: white;
+    color: var(--color-white);
   }
 
   .section-bg-dark h1,
@@ -77,22 +78,14 @@ const classes = `section section-${spacing} section-bg-${background} ${className
   .section-bg-dark h3,
   .section-bg-dark h4,
   .section-bg-dark h5,
-  .section-bg-dark h6 {
-    color: white;
-  }
-
-  .section-bg-primary {
-    background-color: var(--color-primary);
-    color: white;
-  }
-
+  .section-bg-dark h6,
   .section-bg-primary h1,
   .section-bg-primary h2,
   .section-bg-primary h3,
   .section-bg-primary h4,
   .section-bg-primary h5,
   .section-bg-primary h6 {
-    color: white;
+    color: var(--color-white);
   }
 
   /* Responsive spacing - reduce on mobile */

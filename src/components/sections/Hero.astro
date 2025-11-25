@@ -43,14 +43,14 @@ import Button from '../Button.astro';
   .hero-headline {
     font-size: var(--font-size-4xl);
     font-weight: var(--font-weight-bold);
-    color: white;
+    color: var(--color-white);
     margin-bottom: var(--space-lg);
     line-height: var(--line-height-tight);
   }
 
   .hero-subheadline {
     font-size: var(--font-size-xl);
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--color-white-90);
     margin-bottom: var(--space-2xl);
     line-height: var(--line-height-relaxed);
     max-width: 700px;
@@ -68,12 +68,12 @@ import Button from '../Button.astro';
 
   /* Make outline button visible on dark background */
   .hero-section :global(.btn-outline) {
-    border-color: white;
-    color: white;
+    border-color: var(--color-white);
+    color: var(--color-white);
   }
 
   .hero-section :global(.btn-outline:hover) {
-    background-color: white;
+    background-color: var(--color-white);
     color: var(--color-primary);
   }
 

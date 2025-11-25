@@ -1,0 +1,137 @@
+---
+/**
+ * Footer Component
+ *
+ * Site footer with copyright and contact information
+ */
+
+import Container from './Container.astro';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <Container>
+    <div class="footer-content">
+      <!-- Footer Branding -->
+      <div class="footer-brand">
+        <p class="footer-logo">RBK Strategies</p>
+        <p class="footer-tagline">
+          Strategic consulting in operations, finance, and technology
+        </p>
+      </div>
+
+      <!-- Footer Links/Contact -->
+      <div class="footer-links">
+        <a href="mailto:contact@rbkstrategies.com" class="footer-link">
+          contact@rbkstrategies.com
+        </a>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p class="copyright">
+        &copy; {currentYear} RBK Strategies. All rights reserved.
+      </p>
+
+      <!-- Back to Top Link -->
+      <a href="#" class="back-to-top" aria-label="Back to top">
+        Back to top ↑
+      </a>
+    </div>
+  </Container>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--color-primary);
+    color: white;
+    padding-top: var(--space-4xl);
+    padding-bottom: var(--space-xl);
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: var(--space-2xl);
+    margin-bottom: var(--space-2xl);
+    padding-bottom: var(--space-2xl);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .footer-brand {
+    flex: 1;
+  }
+
+  .footer-logo {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-sm);
+    color: white;
+  }
+
+  .footer-tagline {
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 400px;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .footer-link {
+    font-size: var(--font-size-base);
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .footer-link:hover {
+    color: var(--color-accent-light);
+    text-decoration: underline;
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+
+  .copyright {
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .back-to-top {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .back-to-top:hover {
+    color: var(--color-accent-light);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+      gap: var(--space-xl);
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: var(--space-md);
+    }
+  }
+</style>

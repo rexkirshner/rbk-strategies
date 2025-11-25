@@ -44,10 +44,13 @@ import Section from '../Section.astro';
       </div>
 
       <div class="about-photo">
-        <!-- Placeholder for professional photo -->
-        <div class="photo-placeholder">
-          <span class="photo-placeholder-text">Professional Photo</span>
-        </div>
+        <img
+          src="/rex-profile.webp"
+          alt="Rex Kirshner - Principal Consultant at RBK Strategies"
+          class="profile-image"
+          width="800"
+          height="1066"
+        />
       </div>
     </div>
   </Container>
@@ -119,22 +122,18 @@ import Section from '../Section.astro';
     align-items: start;
   }
 
-  .photo-placeholder {
+  .profile-image {
     width: 100%;
     max-width: 400px;
-    aspect-ratio: 3 / 4;
-    background-color: var(--color-bg-dark);
+    height: auto;
     border-radius: var(--border-radius-lg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px dashed var(--color-border);
+    box-shadow: var(--shadow-lg);
+    transition: transform var(--transition-base);
   }
 
-  .photo-placeholder-text {
-    font-size: var(--font-size-lg);
-    color: var(--color-text-muted);
-    text-align: center;
+  .profile-image:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
   }
 
   /* Responsive */

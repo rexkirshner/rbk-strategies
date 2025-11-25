@@ -45,16 +45,16 @@ import Button from '../Button.astro';
         <div class="method-icon">📅</div>
         <h3 class="method-title">Schedule a Call</h3>
         <p class="method-description">Book a 30-minute consultation call directly.</p>
-        <Button href="#calendar" variant="secondary" size="md"> View Calendar </Button>
-        <p class="method-note">Calendly integration (pending configuration)</p>
+        <Button href="https://calendly.com/rexkirshner/30min" variant="secondary" size="md">
+          Schedule Now
+        </Button>
       </div>
     </div>
 
-    <!-- Placeholder note -->
+    <!-- Note about pending form integration -->
     <div class="contact-note">
       <p>
-        <strong>Note:</strong> Contact form and calendar booking require additional configuration
-        with API keys and external service URLs. These will be configured during deployment setup.
+        <strong>Note:</strong> Contact form integration pending (Formspree or Cloudflare Workers configuration needed). Email and calendar booking are fully functional.
       </p>
     </div>
   </Container>

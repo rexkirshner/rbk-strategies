@@ -5,7 +5,7 @@ import cloudflare from '@astrojs/cloudflare';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://rbkstrategies.com',
-  output: 'hybrid', // Use hybrid mode: static by default, server-rendered when needed
+  output: 'server', // Server-rendered mode with Cloudflare adapter
   adapter: cloudflare({
     mode: 'directory', // Deploy to Cloudflare Pages
   }),

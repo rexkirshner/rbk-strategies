@@ -1,0 +1,96 @@
+---
+/**
+ * Services Section
+ *
+ * Showcases the three main consulting services
+ */
+
+import Container from '../Container.astro';
+import Section from '../Section.astro';
+import ServiceCard from '../ServiceCard.astro';
+
+const services = [
+  {
+    icon: '📊',
+    title: 'Business Operations',
+    description:
+      'Streamline processes, improve efficiency, and build scalable systems that support your growth objectives.',
+  },
+  {
+    icon: '💰',
+    title: 'Finance',
+    description:
+      'Financial planning, analysis, budgeting, and cash flow optimization to strengthen your financial foundation.',
+  },
+  {
+    icon: '⚙️',
+    title: 'Technology',
+    description:
+      'Tech strategy, system selection, and digital transformation guidance to leverage technology effectively.',
+  },
+];
+---
+
+<Section id="services" spacing="xl" background="light">
+  <Container>
+    <div class="services-header">
+      <h2 class="services-title">Services</h2>
+      <p class="services-subtitle">
+        Comprehensive consulting services tailored to your business needs
+      </p>
+    </div>
+
+    <div class="services-grid">
+      {services.map((service) => <ServiceCard {...service} />)}
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .services-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto var(--space-4xl) auto;
+  }
+
+  .services-title {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+  }
+
+  .services-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-light);
+    margin-bottom: 0;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-2xl);
+    margin-top: var(--space-3xl);
+  }
+
+  /* Ensure consistent card heights */
+  .services-grid > :global(*) {
+    height: 100%;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .services-title {
+      font-size: var(--font-size-2xl);
+    }
+
+    .services-subtitle {
+      font-size: var(--font-size-md);
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+  }
+</style>

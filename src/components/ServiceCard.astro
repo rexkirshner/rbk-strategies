@@ -1,0 +1,80 @@
+---
+/**
+ * Service Card Component
+ *
+ * Individual service card for the services section
+ *
+ * Props:
+ * @param title - Service title
+ * @param description - Service description
+ * @param icon - Icon emoji or SVG (simple emoji for now)
+ */
+
+interface Props {
+  title: string;
+  description: string;
+  icon: string;
+}
+
+const { title, description, icon } = Astro.props;
+---
+
+<article class="service-card">
+  <div class="service-icon" aria-hidden="true">{icon}</div>
+  <h3 class="service-title">{title}</h3>
+  <p class="service-description">{description}</p>
+</article>
+
+<style>
+  .service-card {
+    background-color: var(--color-bg-white);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-2xl);
+    transition: all var(--transition-base);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-card:hover {
+    border-color: var(--color-secondary);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .service-icon {
+    font-size: var(--font-size-4xl);
+    margin-bottom: var(--space-lg);
+    line-height: 1;
+  }
+
+  .service-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+  }
+
+  .service-description {
+    font-size: var(--font-size-base);
+    color: var(--color-text-light);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .service-card {
+      padding: var(--space-xl);
+    }
+
+    .service-icon {
+      font-size: var(--font-size-3xl);
+    }
+
+    .service-title {
+      font-size: var(--font-size-lg);
+    }
+  }
+</style>

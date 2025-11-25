@@ -1,0 +1,109 @@
+---
+/**
+ * Hero Section
+ *
+ * Main landing section with headline, subheadline, and CTA
+ */
+
+import Container from '../Container.astro';
+import Section from '../Section.astro';
+import Button from '../Button.astro';
+---
+
+<Section id="hero" spacing="xl" background="primary" class="hero-section">
+  <Container>
+    <div class="hero-content">
+      <h1 class="hero-headline">Strategic Consulting for Growing Businesses</h1>
+      <p class="hero-subheadline">
+        Expert guidance in operations, finance, and technology to help your business scale
+        efficiently.
+      </p>
+      <div class="hero-cta">
+        <Button href="#contact" variant="secondary" size="lg">Let's Talk</Button>
+        <Button href="#services" variant="outline" size="lg">View Services</Button>
+      </div>
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .hero-content {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .hero-headline {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    color: white;
+    margin-bottom: var(--space-lg);
+    line-height: var(--line-height-tight);
+  }
+
+  .hero-subheadline {
+    font-size: var(--font-size-xl);
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: var(--space-2xl);
+    line-height: var(--line-height-relaxed);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: var(--space-lg);
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  /* Make outline button visible on dark background */
+  .hero-section :global(.btn-outline) {
+    border-color: white;
+    color: white;
+  }
+
+  .hero-section :global(.btn-outline:hover) {
+    background-color: white;
+    color: var(--color-primary);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-section {
+      min-height: 80vh;
+    }
+
+    .hero-headline {
+      font-size: var(--font-size-3xl);
+    }
+
+    .hero-subheadline {
+      font-size: var(--font-size-lg);
+    }
+
+    .hero-cta {
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-headline {
+      font-size: var(--font-size-2xl);
+    }
+
+    .hero-subheadline {
+      font-size: var(--font-size-md);
+    }
+  }
+</style>

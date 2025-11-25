@@ -1,0 +1,160 @@
+---
+/**
+ * Contact Section
+ *
+ * Multiple contact methods: email, form, and calendar booking
+ */
+
+import Container from '../Container.astro';
+import Section from '../Section.astro';
+import Button from '../Button.astro';
+---
+
+<Section id="contact" spacing="xl" background="light">
+  <Container size="lg">
+    <div class="contact-header">
+      <h2 class="contact-title">Let's Work Together</h2>
+      <p class="contact-subtitle">
+        Ready to optimize your operations, strengthen your finances, or transform your technology?
+        Get in touch to discuss how we can help your business grow.
+      </p>
+    </div>
+
+    <div class="contact-methods">
+      <!-- Email Contact -->
+      <div class="contact-method">
+        <div class="method-icon">📧</div>
+        <h3 class="method-title">Email</h3>
+        <p class="method-description">Send us a message and we'll respond within 24 hours.</p>
+        <Button href="mailto:contact@rbkstrategies.com" variant="secondary" size="md">
+          Send Email
+        </Button>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-method">
+        <div class="method-icon">📝</div>
+        <h3 class="method-title">Contact Form</h3>
+        <p class="method-description">Fill out a form with details about your needs.</p>
+        <Button href="#form" variant="secondary" size="md"> Open Form </Button>
+        <p class="method-note">Form integration: Formspree or Cloudflare Workers (pending)</p>
+      </div>
+
+      <!-- Calendar Booking -->
+      <div class="contact-method">
+        <div class="method-icon">📅</div>
+        <h3 class="method-title">Schedule a Call</h3>
+        <p class="method-description">Book a 30-minute consultation call directly.</p>
+        <Button href="#calendar" variant="secondary" size="md"> View Calendar </Button>
+        <p class="method-note">Calendly integration (pending configuration)</p>
+      </div>
+    </div>
+
+    <!-- Placeholder note -->
+    <div class="contact-note">
+      <p>
+        <strong>Note:</strong> Contact form and calendar booking require additional configuration
+        with API keys and external service URLs. These will be configured during deployment setup.
+      </p>
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .contact-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto var(--space-4xl) auto;
+  }
+
+  .contact-title {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+  }
+
+  .contact-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-light);
+    margin-bottom: 0;
+    line-height: var(--line-height-relaxed);
+  }
+
+  .contact-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-2xl);
+    margin-bottom: var(--space-3xl);
+  }
+
+  .contact-method {
+    background-color: var(--color-bg-white);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-2xl);
+    text-align: center;
+    transition: all var(--transition-base);
+  }
+
+  .contact-method:hover {
+    border-color: var(--color-secondary);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .method-icon {
+    font-size: var(--font-size-4xl);
+    margin-bottom: var(--space-lg);
+  }
+
+  .method-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+  }
+
+  .method-description {
+    font-size: var(--font-size-base);
+    color: var(--color-text-light);
+    margin-bottom: var(--space-lg);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .method-note {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    margin-top: var(--space-md);
+    font-style: italic;
+  }
+
+  .contact-note {
+    background-color: var(--color-bg-dark);
+    border-left: 4px solid var(--color-accent);
+    padding: var(--space-lg);
+    border-radius: var(--border-radius-sm);
+  }
+
+  .contact-note p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-light);
+    margin: 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .contact-title {
+      font-size: var(--font-size-2xl);
+    }
+
+    .contact-subtitle {
+      font-size: var(--font-size-md);
+    }
+
+    .contact-methods {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+  }
+</style>

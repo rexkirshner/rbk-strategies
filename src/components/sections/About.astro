@@ -1,0 +1,165 @@
+---
+/**
+ * About Section
+ *
+ * Brief professional bio and credentials
+ */
+
+import Container from '../Container.astro';
+import Section from '../Section.astro';
+---
+
+<Section id="about" spacing="xl" background="default">
+  <Container size="lg">
+    <div class="about-content">
+      <div class="about-text">
+        <h2 class="about-title">About RBK Strategies</h2>
+        <div class="about-bio">
+          <p>
+            RBK Strategies provides strategic consulting services to help growing businesses
+            optimize their operations, strengthen their financial foundation, and leverage
+            technology effectively.
+          </p>
+          <p>
+            With deep expertise across business operations, finance, and technology, we help
+            organizations build scalable systems and make data-driven decisions that drive
+            sustainable growth.
+          </p>
+          <p>
+            Our approach combines strategic thinking with practical implementation, ensuring that
+            recommendations translate into measurable results for your business.
+          </p>
+        </div>
+
+        <div class="about-highlights">
+          <h3>Key Areas of Expertise:</h3>
+          <ul class="expertise-list">
+            <li>Process optimization and operational efficiency</li>
+            <li>Financial planning and analysis</li>
+            <li>Technology strategy and digital transformation</li>
+            <li>Business systems design and implementation</li>
+            <li>Data-driven decision making</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="about-photo">
+        <!-- Placeholder for professional photo -->
+        <div class="photo-placeholder">
+          <span class="photo-placeholder-text">Professional Photo</span>
+        </div>
+      </div>
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4xl);
+    align-items: start;
+  }
+
+  .about-text {
+    max-width: 700px;
+  }
+
+  .about-title {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: var(--space-xl);
+  }
+
+  .about-bio p {
+    font-size: var(--font-size-base);
+    color: var(--color-text-light);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-lg);
+  }
+
+  .about-highlights {
+    margin-top: var(--space-2xl);
+    padding-top: var(--space-2xl);
+    border-top: 1px solid var(--color-border-light);
+  }
+
+  .about-highlights h3 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+  }
+
+  .expertise-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .expertise-list li {
+    font-size: var(--font-size-base);
+    color: var(--color-text-light);
+    padding: var(--space-sm) 0;
+    padding-left: var(--space-xl);
+    position: relative;
+  }
+
+  .expertise-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-secondary);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .about-photo {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+  }
+
+  .photo-placeholder {
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 3 / 4;
+    background-color: var(--color-bg-dark);
+    border-radius: var(--border-radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed var(--color-border);
+  }
+
+  .photo-placeholder-text {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-muted);
+    text-align: center;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .about-content {
+      grid-template-columns: 1fr;
+      gap: var(--space-3xl);
+    }
+
+    .about-photo {
+      order: -1;
+    }
+
+    .photo-placeholder {
+      max-width: 300px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .about-title {
+      font-size: var(--font-size-2xl);
+    }
+
+    .about-highlights h3 {
+      font-size: var(--font-size-md);
+    }
+  }
+</style>

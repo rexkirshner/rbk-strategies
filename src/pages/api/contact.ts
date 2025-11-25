@@ -26,6 +26,9 @@ import type { APIRoute } from 'astro';
 import { FormProvider } from '../../lib/form-providers';
 import type { FormSubmission } from '../../types/form';
 
+// Mark as server-rendered for Cloudflare Pages deployment
+export const prerender = false;
+
 export const POST: APIRoute = async ({ request }) => {
   try {
     // Parse request body

@@ -15,6 +15,7 @@
     "astro": "^5.16.0"
   },
   "devDependencies": {
+    "@astrojs/cloudflare": "^12.6.11",
     "@typescript-eslint/eslint-plugin": "^8.48.0",
     "@typescript-eslint/parser": "^8.48.0",
     "eslint": "^9.39.1",

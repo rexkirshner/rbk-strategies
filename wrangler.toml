@@ -1,0 +1,29 @@
+# Cloudflare Pages Configuration
+# For deployment via Cloudflare Pages dashboard or Wrangler CLI
+
+name = "rbk-strategies"
+compatibility_date = "2024-01-01"
+
+# Pages-specific configuration
+[build]
+command = "npm run build"
+cwd = "."
+watch_dir = "src"
+
+[build.upload]
+format = "service-worker"
+dir = "dist"
+main = "./dist/index.html"
+
+# Environment variables (configure in Cloudflare dashboard)
+# [vars]
+# Example: FORMSPREE_API_KEY = ""
+
+# Production environment
+[env.production]
+name = "rbk-strategies"
+route = { pattern = "rbkstrategies.com", zone_name = "rbkstrategies.com" }
+
+# Preview/Staging environment
+[env.preview]
+name = "rbk-strategies-preview"

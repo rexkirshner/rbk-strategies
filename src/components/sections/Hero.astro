@@ -32,30 +32,52 @@ import Button from '../Button.astro';
     display: flex;
     align-items: center;
     position: relative;
+    background: linear-gradient(135deg, #1E3A5F 0%, #2A4A75 50%, #2D7DD2 100%);
+    overflow: hidden;
+  }
+
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+      radial-gradient(circle at 20% 50%, rgba(45, 125, 210, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(244, 162, 97, 0.1) 0%, transparent 50%);
+    pointer-events: none;
   }
 
   .hero-content {
     text-align: center;
     max-width: 900px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
   }
 
   .hero-headline {
     font-size: var(--font-size-4xl);
-    font-weight: var(--font-weight-bold);
+    font-weight: 800;
     color: var(--color-white);
     margin-bottom: var(--space-lg);
-    line-height: var(--line-height-tight);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
   }
 
   .hero-subheadline {
     font-size: var(--font-size-xl);
-    color: var(--color-white-90);
-    margin-bottom: var(--space-2xl);
-    line-height: var(--line-height-relaxed);
+    font-weight: 400;
+    color: var(--color-white);
+    opacity: 0.95;
+    margin-bottom: var(--space-3xl);
+    line-height: 1.6;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
   }
 
   .hero-cta {

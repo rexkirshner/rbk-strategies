@@ -95,14 +95,15 @@ import Section from '../Section.astro';
     width: 100%;
     max-width: 400px;
     height: auto;
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-lg);
-    transition: transform var(--transition-base);
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 4px 16px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 3px solid white;
   }
 
   .profile-image:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-xl);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 28px 80px rgba(45, 125, 210, 0.2), 0 8px 24px rgba(0, 0, 0, 0.12);
   }
 
   .profile-links {

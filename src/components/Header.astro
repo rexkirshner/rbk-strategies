@@ -93,9 +93,11 @@ const navLinks = [
     position: sticky;
     top: 0;
     z-index: var(--z-sticky);
-    background-color: var(--color-bg-overlay);
-    border-bottom: 1px solid var(--color-border-light);
-    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.85);
+    border-bottom: 1px solid rgba(30, 58, 95, 0.1);
+    backdrop-filter: blur(12px) saturate(180%);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .nav {

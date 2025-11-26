@@ -39,23 +39,23 @@ const classes = `section section-${spacing} section-bg-${background} ${className
 
   /* Spacing variants */
   .section-sm {
+    padding-top: var(--space-xl);
+    padding-bottom: var(--space-xl);
+  }
+
+  .section-md {
     padding-top: var(--space-2xl);
     padding-bottom: var(--space-2xl);
   }
 
-  .section-md {
+  .section-lg {
     padding-top: var(--space-3xl);
     padding-bottom: var(--space-3xl);
   }
 
-  .section-lg {
+  .section-xl {
     padding-top: var(--space-4xl);
     padding-bottom: var(--space-4xl);
-  }
-
-  .section-xl {
-    padding-top: var(--space-5xl);
-    padding-bottom: var(--space-5xl);
   }
 
   /* Background variants */
@@ -91,23 +91,23 @@ const classes = `section section-${spacing} section-bg-${background} ${className
   /* Responsive spacing - reduce on mobile */
   @media (max-width: 768px) {
     .section-sm {
+      padding-top: var(--space-lg);
+      padding-bottom: var(--space-lg);
+    }
+
+    .section-md {
       padding-top: var(--space-xl);
       padding-bottom: var(--space-xl);
     }
 
-    .section-md {
+    .section-lg {
       padding-top: var(--space-2xl);
       padding-bottom: var(--space-2xl);
     }
 
-    .section-lg {
+    .section-xl {
       padding-top: var(--space-3xl);
       padding-bottom: var(--space-3xl);
-    }
-
-    .section-xl {
-      padding-top: var(--space-4xl);
-      padding-bottom: var(--space-4xl);
     }
   }
 </style>

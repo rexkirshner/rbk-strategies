@@ -40,25 +40,8 @@ export class CloudflareFormProvider extends BaseFormProvider {
 
     try {
       // ========================================
-      // DEVELOPMENT MODE - Console logging only
+      // PRODUCTION MODE - Resend email sending
       // ========================================
-      console.log('[Cloudflare Form Provider] Form submission received:', {
-        name: sanitized.name,
-        email: sanitized.email,
-        company: sanitized.company || '(none)',
-        message: sanitized.message.substring(0, 50) + '...',
-        timestamp: new Date().toISOString(),
-      });
-
-      // Simulate API delay
-      await new Promise((resolve) => setTimeout(resolve, 500));
-
-      // ========================================
-      // PRODUCTION MODE - Uncomment to enable
-      // ========================================
-
-      /*
-      // Option 1: Resend (recommended)
       const resendApiKey = import.meta.env.RESEND_API_KEY;
 
       if (!resendApiKey) {
@@ -72,7 +55,7 @@ export class CloudflareFormProvider extends BaseFormProvider {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from: 'RBK Strategies Contact Form <onboarding@resend.dev>', // Update with verified domain
+          from: 'RBK Strategies Contact Form <inbound@contact.rbkstrategies.com>',
           to: 'contact@rbkstrategies.com',
           subject: `New Contact Form Submission from ${sanitized.name}`,
           html: this.formatEmailHtml(sanitized),
@@ -84,7 +67,9 @@ export class CloudflareFormProvider extends BaseFormProvider {
         const errorData = await response.json();
         throw new Error(errorData.message || 'Email sending failed');
       }
-      */
+
+      // Log success to console for debugging
+      console.log('[Cloudflare Form Provider] Email sent successfully to contact@rbkstrategies.com');
 
       // ========================================
       // Success response
@@ -141,7 +126,7 @@ export class CloudflareFormProvider extends BaseFormProvider {
 
               <div class="field">
                 <div class="label">Email:</div>
-                <div class="value"><a href="mailto:${this.escapeHtml(data.email)}">${this.escapeHtml(data.email)}</a></div>
+                <div class="value">${this.escapeHtml(data.email)}</div>
               </div>
 
               ${

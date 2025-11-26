@@ -68,19 +68,6 @@ import Button from '../Button.astro';
     z-index: 10;
   }
 
-  /* Make outline button visible on dark background */
-  .hero-section :global(.btn-outline) {
-    border-color: var(--color-white) !important;
-    color: var(--color-white) !important;
-    background-color: transparent !important;
-  }
-
-  .hero-section :global(.btn-outline:hover) {
-    background-color: var(--color-white) !important;
-    color: var(--color-primary) !important;
-    border-color: var(--color-white) !important;
-  }
-
   /* Responsive */
   @media (max-width: 768px) {
     .hero-section {

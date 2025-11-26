@@ -15,11 +15,11 @@
      ======================================== */
 
   /* Primary - Deep Navy (Trust, Expertise) */
-  --color-primary: #1E3A5F;
-  --color-primary-rgb: 30, 58, 95;
-  --color-primary-light: #2A4A75;
-  --color-primary-light-rgb: 42, 74, 117;
-  --color-primary-dark: #152B47;
+  --color-primary: #0D1E35;
+  --color-primary-rgb: 13, 30, 53;
+  --color-primary-light: #1A2F4A;
+  --color-primary-light-rgb: 26, 47, 74;
+  --color-primary-dark: #081525;
 
   /* Secondary - Corporate Blue (Technology, Innovation) */
   --color-secondary: #1A4D8A;

@@ -2,67 +2,104 @@
 /**
  * Services Section
  *
- * Showcases the three main consulting services
+ * Showcases the four core competencies with expandable details
  */
 
 import Container from '../Container.astro';
 import Section from '../Section.astro';
-import ServiceCard from '../ServiceCard.astro';
-
-const services = [
-  {
-    icon: '📊',
-    title: 'Business Operations',
-    description:
-      'Streamline processes, improve efficiency, and build scalable systems that support your growth objectives.',
-  },
-  {
-    icon: '💰',
-    title: 'Finance',
-    description:
-      'Financial planning, analysis, budgeting, and cash flow optimization to strengthen your financial foundation.',
-  },
-  {
-    icon: '⚙️',
-    title: 'Technology',
-    description:
-      'Tech strategy, system selection, and digital transformation guidance to leverage technology effectively.',
-  },
-];
+import Accordion from '../Accordion.astro';
 ---
 
 <Section id="services" spacing="xl" background="light">
   <Container>
     <div class="section-header">
-      <h2 class="section-title">Services</h2>
+      <h2 class="section-title">Core Competencies</h2>
       <p class="section-subtitle">
-        Comprehensive consulting services tailored to your business needs
+        Four key areas where I deliver strategic guidance and hands-on expertise to help your business thrive
       </p>
     </div>
 
-    <div class="services-grid">
-      {services.map((service) => <ServiceCard {...service} />)}
+    <div class="competencies-list">
+      <Accordion id="business-ops" icon="📊" title="Business Operations">
+        <p>
+          <strong>Streamline processes, improve efficiency, and build scalable systems</strong> that support your growth objectives.
+        </p>
+        <p>
+          I help businesses optimize their operations through process improvement, workflow automation, and organizational design. Whether you're scaling rapidly or looking to improve efficiency, I'll work with you to create systems that work.
+        </p>
+        <p><strong>Example Projects:</strong></p>
+        <ul>
+          <li><a href="#contact">Process mapping and workflow optimization</a></li>
+          <li><a href="#contact">Team structure and resource planning</a></li>
+          <li><a href="#contact">Standard operating procedure (SOP) development</a></li>
+          <li><a href="#contact">Project management system implementation</a></li>
+        </ul>
+      </Accordion>
+
+      <Accordion id="financial" icon="💰" title="Financial Consulting">
+        <p>
+          <strong>Financial planning, analysis, budgeting, and cash flow optimization</strong> to strengthen your financial foundation.
+        </p>
+        <p>
+          From startup financial modeling to growth-stage budgeting, I provide CFO-level financial guidance without the full-time cost. Get clarity on your numbers, make data-driven decisions, and build sustainable financial systems.
+        </p>
+        <p><strong>Example Projects:</strong></p>
+        <ul>
+          <li><a href="#contact">Financial modeling and forecasting</a></li>
+          <li><a href="#contact">Budget development and variance analysis</a></li>
+          <li><a href="#contact">Cash flow management and optimization</a></li>
+          <li><a href="#contact">Financial dashboard and KPI tracking</a></li>
+        </ul>
+      </Accordion>
+
+      <Accordion id="technology" icon="⚙️" title="Technology Consulting & Solutions">
+        <p>
+          <strong>Tech strategy, system selection, and digital transformation</strong> guidance to leverage technology effectively.
+        </p>
+        <p>
+          I bridge the gap between business needs and technical solutions. Whether you're selecting a CRM, implementing automation, or planning a digital transformation, I'll help you make smart technology decisions that drive results.
+        </p>
+        <p><strong>Example Projects:</strong></p>
+        <ul>
+          <li><a href="#contact">Technology stack evaluation and selection</a></li>
+          <li><a href="#contact">CRM/ERP implementation and integration</a></li>
+          <li><a href="#contact">Workflow automation (Zapier, Make, n8n)</a></li>
+          <li><a href="#contact">Digital transformation roadmapping</a></li>
+        </ul>
+      </Accordion>
+
+      <Accordion id="podcasting" icon="🎙️" title="Podcasting">
+        <p>
+          <strong>Professional podcast production, strategy, and growth</strong> for businesses and creators.
+        </p>
+        <p>
+          From concept to launch and beyond, I help you create a podcast that resonates with your audience. Whether you're starting from scratch or looking to grow an existing show, I provide both strategic guidance and hands-on production support.
+        </p>
+        <p><strong>Example Projects:</strong></p>
+        <ul>
+          <li><a href="#contact">Podcast strategy and format development</a></li>
+          <li><a href="#contact">Audio production and editing</a></li>
+          <li><a href="#contact">Guest booking and show management</a></li>
+          <li><a href="#contact">Distribution and growth strategy</a></li>
+        </ul>
+      </Accordion>
     </div>
   </Container>
 </Section>
 
 <style>
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--space-2xl);
-  }
-
-  /* Ensure consistent card heights */
-  .services-grid > :global(*) {
-    height: 100%;
+  .competencies-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    max-width: 900px;
+    margin: 0 auto;
   }
 
   /* Responsive */
   @media (max-width: 768px) {
-    .services-grid {
-      grid-template-columns: 1fr;
-      gap: var(--space-xl);
+    .competencies-list {
+      gap: var(--space-md);
     }
   }
 </style>

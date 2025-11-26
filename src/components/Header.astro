@@ -96,8 +96,8 @@ const navLinks = [
       const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
       const headerBottom = window.scrollY + header.offsetHeight;
 
-      // Add 'scrolled' class when header bottom touches hero bottom
-      if (headerBottom >= heroBottom) {
+      // Add 'scrolled' class before header bottom reaches hero bottom (50px buffer)
+      if (headerBottom >= heroBottom - 50) {
         header.classList.add('scrolled');
       } else {
         header.classList.remove('scrolled');
@@ -118,7 +118,7 @@ const navLinks = [
     top: 0;
     z-index: var(--z-sticky);
     background-color: transparent;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .header.scrolled {

@@ -31,6 +31,122 @@ const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).href;
 
 // Google Analytics
 const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
+
+// Structured Data (JSON-LD) for SEO
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${Astro.site}#organization`,
+      "name": "RBK Strategies",
+      "legalName": "RBK Services LLC",
+      "url": Astro.site,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${Astro.site}og-image.jpg`,
+        "width": 1200,
+        "height": 630
+      },
+      "description": "Expert consulting services in business operations, finance, and technology for growing businesses.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "CA",
+        "addressCountry": "US"
+      },
+      "email": "contact@rbkstrategies.com",
+      "founder": {
+        "@type": "Person",
+        "name": "Rex Kirshner",
+        "jobTitle": "Principal Consultant",
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "Stanford University"
+        },
+        "url": "https://rexkirshner.com",
+        "sameAs": "https://www.linkedin.com/in/rexkirshner/"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/rexkirshner/"
+      ]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": `${Astro.site}#localbusiness`,
+      "name": "RBK Strategies",
+      "image": `${Astro.site}og-image.jpg`,
+      "telephone": "+1-XXX-XXX-XXXX",
+      "email": "contact@rbkstrategies.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "CA",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "addressCountry": "US"
+      },
+      "url": Astro.site,
+      "priceRange": "$$",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "17:00"
+      }
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": `${Astro.site}#service`,
+      "name": "Business Consulting Services",
+      "provider": {
+        "@id": `${Astro.site}#organization`
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "United States"
+      },
+      "serviceType": [
+        "Business Operations Consulting",
+        "Financial Consulting",
+        "Technology Consulting",
+        "Strategic Planning"
+      ],
+      "description": "Expert guidance in operations, finance, and technology to help your business scale efficiently."
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${Astro.site}#website`,
+      "url": Astro.site,
+      "name": "RBK Strategies",
+      "description": "Strategic consulting for growing businesses",
+      "publisher": {
+        "@id": `${Astro.site}#organization`
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "WebPage",
+      "@id": canonicalURL,
+      "url": canonicalURL,
+      "name": fullTitle,
+      "isPartOf": {
+        "@id": `${Astro.site}#website`
+      },
+      "about": {
+        "@id": `${Astro.site}#organization`
+      },
+      "description": description,
+      "inLanguage": "en-US"
+    }
+  ]
+};
 ---
 
 <!doctype html>
@@ -45,6 +161,14 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
     <meta name="title" content={fullTitle} />
     <meta name="description" content={description} />
     <meta name="author" content="Rex Kirshner" />
+    <meta name="keywords" content="business consulting, operations consulting, financial consulting, technology consulting, strategic planning, business operations, California business consulting, startup consulting, scale business" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="geo.region" content="US-CA" />
+    <meta name="geo.placename" content="California" />
+    <meta name="geo.position" content="37.7749;-122.4194" />
+    <meta name="ICBM" content="37.7749, -122.4194" />
 
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
@@ -99,9 +223,14 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
       )
     }
 
-    <!-- Preconnect to improve performance -->
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+    <!-- Preconnect and DNS Prefetch to improve performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
     <!-- Google Fonts - Inter -->
     <link

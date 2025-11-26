@@ -6,19 +6,20 @@
  *
  * Props:
  * @param title - Accordion header text
- * @param icon - Optional emoji/icon
  * @param id - Unique ID for accordion (required for accessibility)
  * @param defaultOpen - Whether accordion starts expanded (default: false)
+ *
+ * Slots:
+ * @slot icon - Optional SVG icon to display before title
  */
 
 interface Props {
   title: string;
-  icon?: string;
   id: string;
   defaultOpen?: boolean;
 }
 
-const { title, icon, id, defaultOpen = false } = Astro.props;
+const { title, id, defaultOpen = false } = Astro.props;
 const buttonId = `accordion-button-${id}`;
 const contentId = `accordion-content-${id}`;
 ---
@@ -33,7 +34,9 @@ const contentId = `accordion-content-${id}`;
     data-accordion-button
   >
     <span class="accordion-header">
-      {icon && <span class="accordion-icon">{icon}</span>}
+      <span class="accordion-icon">
+        <slot name="icon" />
+      </span>
       <span class="accordion-title">{title}</span>
     </span>
     <svg
@@ -135,10 +138,14 @@ const contentId = `accordion-content-${id}`;
   }
 
   .accordion-icon {
-    font-size: var(--font-size-2xl);
     line-height: 1;
     display: inline-block;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--color-secondary);
+  }
+
+  .accordion-icon svg {
+    display: block;
   }
 
   .accordion-button:hover .accordion-icon {

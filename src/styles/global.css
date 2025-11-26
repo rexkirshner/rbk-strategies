@@ -95,18 +95,41 @@ p {
 a {
   color: var(--color-secondary);
   text-decoration: none;
+  position: relative;
   transition: color var(--transition-fast);
 }
 
 a:hover {
   color: var(--color-secondary-dark);
-  text-decoration: underline;
 }
 
 a:focus-visible {
   outline: 2px solid var(--color-secondary);
   outline-offset: 2px;
   border-radius: var(--border-radius-sm);
+}
+
+/* Animated underline for navigation and text links */
+.nav-link,
+.profile-link {
+  position: relative;
+}
+
+.nav-link::after,
+.profile-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-secondary);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover::after,
+.profile-link:hover::after {
+  width: 100%;
 }
 
 /* ========================================
@@ -123,6 +146,30 @@ a:focus-visible {
 
 .text-light {
   color: var(--color-text-light);
+}
+
+/* Section Headers - Dramatic Typography */
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-4xl);
+}
+
+.section-title {
+  font-size: clamp(36px, 7vw, 64px);
+  font-weight: 900;
+  color: var(--color-primary);
+  margin-bottom: var(--space-lg);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  position: relative;
+}
+
+.section-subtitle {
+  font-size: clamp(16px, 2.5vw, 20px);
+  color: var(--color-text-light);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: var(--line-height-relaxed);
 }
 
 strong,

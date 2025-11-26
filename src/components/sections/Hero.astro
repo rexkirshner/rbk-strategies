@@ -49,6 +49,24 @@ import Button from '../Button.astro';
     pointer-events: none;
   }
 
+  .hero-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+      linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(255,255,255,0.02) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.02) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.02) 75%);
+    background-size: 60px 60px;
+    background-position: 0 0, 0 30px, 30px -30px, -30px 0px;
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
   .hero-content {
     text-align: center;
     max-width: 900px;
@@ -58,13 +76,17 @@ import Button from '../Button.astro';
   }
 
   .hero-headline {
-    font-size: var(--font-size-4xl);
-    font-weight: 800;
-    color: var(--color-white);
+    font-size: clamp(48px, 10vw, 100px);
+    font-weight: 900;
+    background: linear-gradient(135deg, #FFFFFF 0%, #E0F2FE 50%, #BFDBFE 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: var(--space-lg);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    text-shadow: none;
+    filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.3));
   }
 
   .hero-subheadline {

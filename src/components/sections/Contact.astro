@@ -89,6 +89,12 @@ import ContactForm from '../ContactForm.astro';
   .method-icon {
     font-size: var(--font-size-4xl);
     margin-bottom: var(--space-lg);
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .contact-method:hover .method-icon {
+    transform: scale(1.15) rotate(-5deg);
   }
 
   .method-title {

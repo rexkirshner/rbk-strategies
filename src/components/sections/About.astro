@@ -71,10 +71,23 @@ import Section from '../Section.astro';
   }
 
   .about-title {
-    font-size: var(--font-size-3xl);
-    font-weight: var(--font-weight-bold);
+    font-size: clamp(36px, 6vw, 56px);
+    font-weight: 900;
     color: var(--color-primary);
     margin-bottom: var(--space-xl);
+    letter-spacing: -0.02em;
+    position: relative;
+  }
+
+  .about-title::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-secondary), var(--color-accent));
+    border-radius: 2px;
   }
 
   .about-bio p {

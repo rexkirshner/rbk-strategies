@@ -137,6 +137,12 @@ const contentId = `accordion-content-${id}`;
   .accordion-icon {
     font-size: var(--font-size-2xl);
     line-height: 1;
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .accordion-button:hover .accordion-icon {
+    transform: scale(1.1) rotate(5deg);
   }
 
   .accordion-title {

@@ -86,7 +86,7 @@ import Button from '../Button.astro';
     display: flex;
     align-items: center;
     position: relative;
-    background: linear-gradient(135deg, #1E3A5F 0%, #2A4A75 50%, #2D7DD2 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 50%, var(--color-secondary-light) 100%);
     overflow: hidden;
   }
 
@@ -98,8 +98,8 @@ import Button from '../Button.astro';
     right: 0;
     bottom: 0;
     background:
-      radial-gradient(circle at 20% 50%, rgba(45, 125, 210, 0.15) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba(244, 162, 97, 0.1) 0%, transparent 50%);
+      radial-gradient(circle at 20% 50%, rgba(var(--color-secondary-light-rgb), 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(var(--color-accent-rgb), 0.1) 0%, transparent 50%);
     pointer-events: none;
   }
 
@@ -157,7 +157,7 @@ import Button from '../Button.astro';
     margin-bottom: var(--space-lg);
     line-height: 1.15;
     letter-spacing: -0.02em;
-    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3), 0 4px 40px rgba(45, 125, 210, 0.2);
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3), 0 4px 40px rgba(var(--color-secondary-light-rgb), 0.2);
   }
 
   .hero-subheadline {

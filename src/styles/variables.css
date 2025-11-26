@@ -16,16 +16,20 @@
 
   /* Primary - Deep Navy (Trust, Expertise) */
   --color-primary: #1E3A5F;
+  --color-primary-rgb: 30, 58, 95;
   --color-primary-light: #2A4A75;
+  --color-primary-light-rgb: 42, 74, 117;
   --color-primary-dark: #152B47;
 
   /* Secondary - Corporate Blue (Technology, Innovation) */
   --color-secondary: #1A4D8A;
   --color-secondary-light: #2D7DD2;
+  --color-secondary-light-rgb: 45, 125, 210;
   --color-secondary-dark: #133A6A;
 
   /* Accent - Warm Amber (Approachability, Energy) */
   --color-accent: #F4A261;
+  --color-accent-rgb: 244, 162, 97;
   --color-accent-light: #F6B47A;
   --color-accent-dark: #E68945;
 
@@ -49,6 +53,14 @@
   /* Border Colors */
   --color-border: #D1D5DB;
   --color-border-light: #E5E7EB;
+
+  /* Semantic Colors */
+  --color-success: #155724;
+  --color-success-bg: #d4edda;
+  --color-success-border: #c3e6cb;
+  --color-error: #721c24;
+  --color-error-bg: #f8d7da;
+  --color-error-border: #f5c6cb;
 
   /* ========================================
      Typography

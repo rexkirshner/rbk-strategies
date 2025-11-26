@@ -81,19 +81,19 @@ const classes = `btn btn-${variant} btn-${size} ${className}`.trim();
     background-color: var(--color-primary);
     color: white;
     border-color: var(--color-primary);
-    box-shadow: 0 4px 12px rgba(30, 58, 95, 0.15);
+    box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.15);
   }
 
   .btn-primary:hover {
     background-color: var(--color-primary-dark);
     border-color: var(--color-primary-dark);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(30, 58, 95, 0.25), 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgba(var(--color-primary-rgb), 0.25), 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 
   .btn-primary:active {
     transform: translateY(0);
-    box-shadow: 0 4px 12px rgba(30, 58, 95, 0.15);
+    box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.15);
   }
 
   /* Secondary Variant */
@@ -101,19 +101,19 @@ const classes = `btn btn-${variant} btn-${size} ${className}`.trim();
     background-color: var(--color-secondary);
     color: white;
     border-color: var(--color-secondary);
-    box-shadow: 0 4px 12px rgba(45, 125, 210, 0.2);
+    box-shadow: 0 4px 12px rgba(var(--color-secondary-light-rgb), 0.2);
   }
 
   .btn-secondary:hover {
     background-color: var(--color-secondary-dark);
     border-color: var(--color-secondary-dark);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(45, 125, 210, 0.3), 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgba(var(--color-secondary-light-rgb), 0.3), 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 
   .btn-secondary:active {
     transform: translateY(0);
-    box-shadow: 0 4px 12px rgba(45, 125, 210, 0.2);
+    box-shadow: 0 4px 12px rgba(var(--color-secondary-light-rgb), 0.2);
   }
 
   /* Outline Variant */

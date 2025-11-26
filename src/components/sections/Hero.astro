@@ -88,6 +88,7 @@ import Button from '../Button.astro';
     position: relative;
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 50%, var(--color-secondary-light) 100%);
     overflow: hidden;
+    padding-top: 80px;
   }
 
   .hero-section::before {
@@ -158,6 +159,9 @@ import Button from '../Button.astro';
     line-height: 1.15;
     letter-spacing: -0.02em;
     text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3), 0 4px 40px rgba(var(--color-secondary-light-rgb), 0.2);
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .hero-subheadline {
@@ -167,7 +171,7 @@ import Button from '../Button.astro';
     opacity: 0.95;
     margin-bottom: var(--space-3xl);
     line-height: 1.6;
-    max-width: 700px;
+    max-width: 580px;
     margin-left: auto;
     margin-right: auto;
     text-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
@@ -187,14 +191,21 @@ import Button from '../Button.astro';
   @media (max-width: 768px) {
     .hero-section {
       min-height: 80vh;
+      padding-top: 60px;
     }
 
     .hero-headline {
       font-size: var(--font-size-3xl);
+      max-width: 420px;
+      padding-left: var(--space-md);
+      padding-right: var(--space-md);
     }
 
     .hero-subheadline {
       font-size: var(--font-size-lg);
+      max-width: 400px;
+      padding-left: var(--space-md);
+      padding-right: var(--space-md);
     }
 
     .hero-cta {
@@ -206,10 +217,12 @@ import Button from '../Button.astro';
   @media (max-width: 480px) {
     .hero-headline {
       font-size: var(--font-size-2xl);
+      max-width: 340px;
     }
 
     .hero-subheadline {
       font-size: var(--font-size-md);
+      max-width: 320px;
     }
   }
 </style>

@@ -5,7 +5,7 @@ import cloudflare from '@astrojs/cloudflare';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://rbkstrategies.com',
-  output: 'static', // Static site generation (no SSR needed)
+  output: 'server', // Server mode with prerendering for static pages
   adapter: cloudflare({
     mode: 'directory', // Deploy to Cloudflare Pages
   }),

@@ -162,6 +162,12 @@ import Section from '../Section.astro';
   @media (max-width: 768px) {
     .about-title {
       font-size: var(--font-size-2xl);
+      text-align: center;
+    }
+
+    .about-title::before {
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     .about-highlights h3 {

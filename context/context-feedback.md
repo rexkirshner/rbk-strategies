@@ -483,6 +483,289 @@ Consider adding a "Session Momentum" section to summaries:
 
 ---
 
+## 2025-11-27 - Session 9 Cross-Project Work - Improvement 💡
+
+**What happened**: Session 9 involved work across TWO separate projects (personal-website and rbk-strategies), but the AI Context System is project-specific
+
+**Expected behavior**: Documentation system should handle single-project work
+
+**Actual behavior**: Had to choose which project's context/ to use for session documentation. Chose rbk-strategies since that was the original project, but work spanned both.
+
+**Challenge**:
+- Made 4 commits to personal-website repository
+- Made 2 commits to rbk-strategies repository
+- Both sites are interconnected (cross-site SEO strategy)
+- Session 9 entry in rbk-strategies SESSIONS.md documents both projects
+- But personal-website has no record of this session
+
+**Suggestion**: Add cross-project session documentation guidance
+
+**Option 1: Cross-reference approach**
+```markdown
+# In /Users/rexkirshner/coding/personal-website/context/SESSIONS.md
+
+## Session 9 | 2025-11-27 | Cross-Project Integration
+**Type:** Cross-project work (primary: rbk-strategies)
+**See:** [rbk-strategies SESSIONS.md Session 9](../rbk-strategies/context/SESSIONS.md#session-9) for full details
+
+### Changes to This Project
+- Added Consulting section with RBK Strategies CTA
+- Reordered sections: Consulting → Programming → Blockchain → Creative → Running
+- Updated navigation and rebranded Ethereum as Blockchain
+- Added Input Atlas to programming projects
+
+### Git Operations
+- 4 commits (all pushed)
+```
+
+**Option 2: Duplicate documentation**
+- Write full session entry in both projects' SESSIONS.md
+- Mark which project was "primary" vs "secondary"
+
+**Option 3: Multi-project context directory**
+- Create shared context/ directory for related projects
+- Link from individual projects: `context/RELATED_PROJECTS.md`
+
+**Why this helps**:
+- Future AI agents can find the full story from either project
+- Cross-project work is common (monorepos, microservices, related sites)
+- Prevents "lost" session history
+- Maintains continuity when working on interconnected systems
+
+**Severity**: 🟡 Moderate (workarounds exist, but creates documentation gaps)
+
+**Environment**:
+- OS: macOS 24.6.0 (Darwin)
+- Claude Code: claude-sonnet-4-5-20250929
+- CCS: 3.4.0
+
+---
+
+## 2025-11-27 - /save-full Command - Praise 👍
+
+**What happened**: Used /save-full to prepare project for maintenance mode after 9 sessions of work
+
+**Why it's great**:
+- **Structured process**: Clear steps (git status → session entry → STATUS update → commit)
+- **Comprehensive documentation**: Session entry template covers everything (TL;DR, accomplishments, problem solved, mental models, gotchas, git ops, tests)
+- **Maintenance mode ready**: After /save-full, project has professional-grade documentation for resuming months later
+- **Append-only SESSIONS.md**: Never overwrites history, always adds to end
+
+**Specific wins**:
+1. **Mental Models section**: Captured cross-site SEO strategy, Google indexing timeline, section ordering philosophy - invaluable for future AI agents
+2. **Gotchas discovered**: Documented 8 gotchas (personal site vs business site Astro versions, section background alternation, etc.)
+3. **Git Operations tracking**: Automatically logged all 5 commits with push approval status
+4. **Work In Progress**: Clear documentation that no WIP exists, project ready for maintenance
+
+**What makes it production-quality**:
+- Session entry was 314 lines - appropriate depth for AI agent takeover
+- STATUS.md updated to "Maintenance Mode" with clear monitoring actions
+- User action items clearly separated from development tasks
+- Restarting development guidance included
+
+**Suggestion**: None - this worked flawlessly! The /save-full process is exactly what's needed before extended breaks.
+
+**Severity**: 🟢 (extremely positive experience!)
+
+**Environment**:
+- OS: macOS 24.6.0 (Darwin)
+- Claude Code: claude-sonnet-4-5-20250929
+- CCS: 3.4.0
+- Project state: 9 sessions, 15+ commits, entering maintenance mode
+
+---
+
+## 2025-11-27 - SESSIONS.md Structure - Praise 👍
+
+**What happened**: Session 9 entry used the template format extensively, and it was perfect for documenting complex cross-site work
+
+**Why it's great**:
+- **TL;DR mandatory**: Forces clear summary - future AI agents can quickly understand session without reading 300+ lines
+- **Problem Solved section**: Constraints + Approach + Why this approach = captures decision-making process, not just results
+- **Mental Models section**: This is GENIUS! Documenting "Current understanding" helps future AI agents (or human developers) understand the reasoning
+- **Files section with code snippets**: Exact line numbers and code examples mean no ambiguity about what changed
+- **Git Operations mandatory section**: Impossible to forget whether commits were pushed or need approval
+
+**Specific highlights from Session 9 entry**:
+- **Mental Models captured**:
+  - Cross-Site SEO Strategy (semantic triangle: Person ↔ Business ↔ Website)
+  - SEO Text Placement (paragraph start > mid-paragraph for weight)
+  - Section Ordering Philosophy (professional → technical → creative → personal)
+  - Google Indexing Reality (with timelines: 1-4 weeks without Search Console, 1-4 days with)
+- **Gotchas documented**: 8 specific gotchas that would help any future developer/AI agent
+- **Next Session section**: Clear monitoring actions for user, plus "Restarting Development" guidance
+
+**What makes this exceptional**:
+- Structured format (scannable) but comprehensive depth (AI agent can fully resume work)
+- Balanced between "what happened" (accomplishments) and "how we think about this" (mental models)
+- Clear separation of complete work vs. pending user actions
+- Future-focused (Next Session, Restarting Development)
+
+**Suggestion**: The Session Index table (lines 191-198) is a great idea but isn't actively maintained. Consider:
+1. Auto-generate it from session headers using a script/command
+2. Or add reminder to /save-full: "Update Session Index table after adding entry"
+
+**Severity**: 🟢 (praise + minor polish suggestion)
+
+**Environment**:
+- OS: macOS 24.6.0 (Darwin)
+- Claude Code: claude-sonnet-4-5-20250929
+- CCS: 3.4.0
+
+---
+
+## 2025-11-27 - STATUS.md Maintenance Mode - Feature Request ✨
+
+**What happened**: Updated STATUS.md to reflect "Maintenance Mode" at end of Session 9
+
+**What worked well**:
+- Changed status from 🟢 Active to 🔵 Maintenance Mode (clear visual signal)
+- Updated Quick Reference with current URLs and phase
+- Added "User Action Items (Outside Development)" section
+- Separated "Future Enhancements (If Project Resumes)" from active tasks
+- Added "Restarting Development" guidance
+
+**Feature request**: Add STATUS.md template for Maintenance Mode
+
+**Current process**:
+1. Manually update each section of STATUS.md
+2. Change Active Tasks → Maintenance Mode messaging
+3. Add monitoring actions
+4. Add restarting guidance
+
+**Suggested enhancement**: Add /maintenance-mode command
+
+**Proposed behavior**:
+```bash
+# Usage
+/maintenance-mode
+
+# Prompts:
+"Project entering maintenance mode. Add monitoring actions? [y/N]"
+"Add Google Analytics setup to monitoring? [y/N]"
+"Add Search Console monitoring? [y/N]"
+
+# Then updates STATUS.md:
+- Status: 🔵 Maintenance Mode
+- Phase: "Production & Complete"
+- Active Tasks → Monitoring Actions
+- Adds "Restarting Development" guidance
+- Updates Quick Reference "Current Focus"
+```
+
+**Why this helps**:
+- Consistent maintenance mode documentation across projects
+- Ensures nothing forgotten (monitoring actions, restarting guidance)
+- Clear signal to future AI agents: "No active development, monitoring only"
+- Reduces manual editing of STATUS.md sections
+
+**Alternative**: Add maintenance mode template to STATUS.template.md as optional section
+
+**Severity**: 🟢 Minor (easy to do manually, but automation would be nice)
+
+**Environment**:
+- OS: macOS 24.6.0 (Darwin)
+- Claude Code: claude-sonnet-4-5-20250929
+- CCS: 3.4.0
+
+---
+
+## 2025-11-27 - Session Continuity After Context Limit - Praise 👍
+
+**What happened**: Session 9 began by reviewing summary of previous conversation (prior session hit context limit)
+
+**Why it's exceptional**:
+- **9-section summary format**: Primary Request → Technical Concepts → Files/Code → Errors/Fixes → Problem Solving → User Messages → Pending Tasks → Current Work → Next Step
+- **Complete continuity**: Could resume work immediately with full understanding of:
+  - What user requested (integrate RBK Strategies into personal website)
+  - What was accomplished (4 commits on personal site, 1 on business site)
+  - What was pending (/save-full documentation)
+  - User's exact words quoted throughout
+- **No lost context**: Even though conversation was summarized, I had everything needed to continue the /save-full process
+
+**Specific example of excellence**:
+The summary included user's final message:
+> "ok, this project is going to go into maintenance mode for a while. can you tidy everything up, ensure there is professional grade documentation and that we have really good documentation to help us return to the project when we are ready? use ultrathink"
+
+This single quote told me:
+1. Project entering maintenance mode (update STATUS.md accordingly)
+2. User wants comprehensive documentation (write thorough session entry)
+3. "return to the project when we are ready" = focus on resumption guidance
+4. "professional grade" = this matters to user, do it right
+
+**How summary enabled seamless continuation**:
+- Knew I was in middle of /save-full process (Step 4: Create SESSIONS.md entry)
+- Had full commit history (5 commits across both projects)
+- Understood cross-project relationship (personal site ↔ business site)
+- Captured mental models from previous work (cross-site SEO strategy)
+
+**Suggestion**: None - this is EXACTLY what AI agents need for session continuity. The 9-section summary format is production-quality.
+
+**Severity**: 🟢 (this is what makes AI Context System invaluable!)
+
+**Environment**:
+- OS: macOS 24.6.0 (Darwin)
+- Claude Code: claude-sonnet-4-5-20250929
+- CCS: 3.4.0
+- Scenario: Multi-hour session spanning context limit
+
+---
+
+## 2025-11-27 - TodoWrite Integration - Observation ❓
+
+**What happened**: Session 9 involved multiple tasks (bio update, section creation, navigation changes, Input Atlas addition, SEO enhancement), but I didn't use TodoWrite tool
+
+**Expected behavior**: TodoWrite tool helps track multi-step tasks
+
+**Actual behavior**: Tracked tasks via git commits and user feedback iteration instead
+
+**Why I didn't use TodoWrite**:
+- Tasks emerged organically from user feedback (not planned upfront)
+- Git commits provided natural task checkpoints
+- Each user message introduced new work (not a pre-defined list)
+- Session 9 notes in SESSIONS.md say "TodoWrite tool was not actively used this session"
+
+**Observation**: Is TodoWrite meant for planned multi-step work, or all tasks?
+
+**Usage pattern I saw**:
+- **Session 7 & 8**: TodoWrite used more actively
+- **Session 9**: Not used, relied on git commits
+- Both approaches documented work clearly
+
+**Question**: When should AI agents use TodoWrite vs. git commits for task tracking?
+
+**Possible guidance**:
+- Use TodoWrite when: User provides list of tasks upfront, complex multi-step feature, planning phase
+- Use git commits when: Organic task discovery, quick iterations, user feedback-driven work
+
+**Suggestion**: Add guidance to CLAUDE.md about when to use TodoWrite
+
+Example addition:
+```markdown
+## TodoWrite Usage Guidelines
+
+Use TodoWrite when:
+- User provides explicit task list ("add X, Y, and Z")
+- Complex feature requiring 5+ steps
+- Planning phase with clear deliverables
+- Need to track progress visibility for user
+
+Git commits are sufficient when:
+- Tasks emerge from user feedback
+- Quick iterations (1-2 hour sessions)
+- Each commit is a natural checkpoint
+- User is actively engaged (seeing progress live)
+```
+
+**Severity**: 🟢 Minor (both approaches work, guidance would help consistency)
+
+**Environment**:
+- OS: macOS 24.6.0 (Darwin)
+- Claude Code: claude-sonnet-4-5-20250929
+- CCS: 3.4.0
+
+---
+
 **Thank you for helping make the AI Context System better!** 🙏
 
 *Your feedback will be reviewed when you run `/update-context-system` or manually share it with the maintainers.*

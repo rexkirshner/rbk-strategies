@@ -19,8 +19,8 @@ interface Props {
 }
 
 const {
-  title = 'RBK Strategies - Business Operations, Finance & Technology Consulting',
-  description = 'Expert consulting services in business operations, finance, and technology. Strategic guidance to help your business scale efficiently.',
+  title = 'RBK Strategies - Rex Kirshner | Business Operations, Finance & Technology Consulting',
+  description = 'Rex Kirshner provides expert consulting services in business operations, finance, and technology. Strategic guidance to help your business scale efficiently.',
   ogImage = '/og-image.jpg',
   canonical,
 } = Astro.props;
@@ -161,7 +161,7 @@ const structuredData = {
     <meta name="title" content={fullTitle} />
     <meta name="description" content={description} />
     <meta name="author" content="Rex Kirshner" />
-    <meta name="keywords" content="business consulting, operations consulting, financial consulting, technology consulting, strategic planning, business operations, California business consulting, startup consulting, scale business" />
+    <meta name="keywords" content="Rex Kirshner, RBK Strategies, business consulting, operations consulting, financial consulting, technology consulting, strategic planning, business operations, California business consulting, startup consulting, scale business" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow" />
     <meta name="language" content="English" />
@@ -172,6 +172,10 @@ const structuredData = {
 
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
+
+    <!-- Identity Verification (rel="me" for personal brand consolidation) -->
+    <link rel="me" href="https://rexkirshner.com" />
+    <link rel="me" href="https://www.linkedin.com/in/rexkirshner/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />

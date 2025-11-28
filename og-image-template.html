@@ -27,7 +27,7 @@
     .og-image {
       width: 1200px;
       height: 630px;
-      background: linear-gradient(135deg, #0D1E35 0%, #1E3A5F 100%);
+      background: linear-gradient(135deg, #0D1E35 0%, #1A2F4A 50%, #2D7DD2 100%);
       position: relative;
       overflow: hidden;
       display: flex;
@@ -36,7 +36,19 @@
       padding: 80px 100px;
     }
 
-    /* Subtle gradient overlay */
+    /* Circuit board pattern overlay */
+    .circuit-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Radial gradient overlays (matching hero section) */
     .og-image::before {
       content: '';
       position: absolute;
@@ -44,8 +56,11 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: radial-gradient(circle at 80% 20%, rgba(45, 125, 210, 0.15) 0%, transparent 60%);
+      background:
+        radial-gradient(circle at 20% 50%, rgba(45, 125, 210, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(244, 162, 97, 0.1) 0%, transparent 50%);
       pointer-events: none;
+      z-index: 2;
     }
 
     /* Content container */
@@ -69,13 +84,15 @@
       line-height: 1.1;
       margin-bottom: 30px;
       letter-spacing: -0.03em;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
     }
 
     .subheadline {
       font-size: 36px;
       font-weight: 500;
-      color: rgba(255, 255, 255, 0.85);
+      color: rgba(255, 255, 255, 0.9);
       line-height: 1.4;
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
     }
 
     /* Accent bar at bottom */
@@ -86,24 +103,92 @@
       right: 0;
       height: 10px;
       background: linear-gradient(90deg, #2D7DD2 0%, #F4A261 100%);
+      z-index: 15;
     }
 
-    /* Small decorative element */
-    .decorative-dot {
-      position: absolute;
-      top: 80px;
-      left: 100px;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #2D7DD2;
-      box-shadow: 0 0 20px rgba(45, 125, 210, 0.5);
+    /* Pulsing animations for connection nodes */
+    @keyframes nodePulse {
+      0%, 100% {
+        opacity: 0.2;
+        fill: rgba(255, 255, 255, 0.2);
+      }
+      50% {
+        opacity: 1;
+        fill: rgba(255, 255, 255, 0.5);
+      }
+    }
+
+    .node-pulse-1 {
+      animation: nodePulse 2.5s ease-in-out infinite;
+      animation-delay: 0s;
+    }
+
+    .node-pulse-2 {
+      animation: nodePulse 2.5s ease-in-out infinite;
+      animation-delay: 0.8s;
+    }
+
+    .node-pulse-3 {
+      animation: nodePulse 2.5s ease-in-out infinite;
+      animation-delay: 1.6s;
     }
   </style>
 </head>
 <body>
   <div class="og-image">
-    <div class="decorative-dot"></div>
+    <!-- Circuit board pattern (matching hero section) -->
+    <svg class="circuit-pattern" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+      <!-- Horizontal traces -->
+      <line x1="0" y1="120" x2="280" y2="120" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+      <line x1="350" y1="120" x2="600" y2="120" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+      <line x1="0" y1="280" x2="180" y2="280" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <line x1="250" y1="280" x2="450" y2="280" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <line x1="520" y1="280" x2="800" y2="280" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <line x1="200" y1="450" x2="500" y2="450" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+      <line x1="580" y1="450" x2="900" y2="450" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+      <line x1="400" y1="620" x2="700" y2="620" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <line x1="780" y1="620" x2="1200" y2="620" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+
+      <!-- Vertical traces -->
+      <line x1="180" y1="0" x2="180" y2="200" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <line x1="180" y1="260" x2="180" y2="450" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <line x1="350" y1="50" x2="350" y2="280" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+      <line x1="500" y1="200" x2="500" y2="500" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <line x1="700" y1="100" x2="700" y2="350" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+      <line x1="700" y1="420" x2="700" y2="700" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+      <line x1="900" y1="250" x2="900" y2="550" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <line x1="1050" y1="0" x2="1050" y2="300" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+
+      <!-- Diagonal connections -->
+      <line x1="180" y1="280" x2="280" y2="380" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+      <line x1="500" y1="450" x2="620" y2="570" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+      <line x1="700" y1="280" x2="850" y2="430" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+
+      <!-- Connection nodes with pulsing -->
+      <circle cx="180" cy="120" r="4" class="node-pulse-1"/>
+      <circle cx="350" cy="120" r="5" class="node-pulse-2"/>
+      <circle cx="180" cy="280" r="4" fill="rgba(255,255,255,0.2)"/>
+      <circle cx="350" cy="280" r="4" class="node-pulse-3"/>
+      <circle cx="500" cy="280" r="5" fill="rgba(255,255,255,0.2)"/>
+      <circle cx="700" cy="280" r="4" class="node-pulse-1"/>
+      <circle cx="500" cy="450" r="5" class="node-pulse-2"/>
+      <circle cx="700" cy="450" r="4" fill="rgba(255,255,255,0.2)"/>
+      <circle cx="900" cy="450" r="4" class="node-pulse-3"/>
+      <circle cx="700" cy="620" r="5" class="node-pulse-1"/>
+
+      <!-- Chip rectangles -->
+      <rect x="270" y="110" width="25" height="25" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" rx="3"/>
+      <rect x="590" y="110" width="30" height="18" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" rx="3"/>
+      <rect x="440" y="270" width="20" height="28" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" rx="3"/>
+      <rect x="870" y="440" width="35" height="22" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" rx="3"/>
+      <rect x="240" y="370" width="22" height="22" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" rx="3"/>
+
+      <!-- Small detail dots -->
+      <circle cx="280" cy="120" r="2" fill="rgba(255,255,255,0.15)"/>
+      <circle cx="250" cy="280" r="2" fill="rgba(255,255,255,0.15)"/>
+      <circle cx="580" cy="450" r="2" fill="rgba(255,255,255,0.15)"/>
+      <circle cx="780" cy="620" r="2" fill="rgba(255,255,255,0.15)"/>
+    </svg>
 
     <div class="content">
       <div class="logo">RBK Strategies</div>

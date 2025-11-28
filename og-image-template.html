@@ -2,10 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=1200, initial-scale=1.0">
-  <title>RBK Strategies - OG Image</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     * {
@@ -14,61 +10,58 @@
       box-sizing: border-box;
     }
 
-    html, body {
+    html {
       width: 1200px;
       height: 630px;
       margin: 0;
       padding: 0;
       overflow: hidden;
+      background: #2D7DD2;
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0D1E35 0%, #1A2F4A 50%, #2D7DD2 100%);
-    }
-
-    .og-image {
       width: 1200px;
       height: 630px;
-      background: linear-gradient(135deg, #0D1E35 0%, #1A2F4A 50%, #2D7DD2 100%);
-      position: relative;
+      margin: 0;
+      padding: 0;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 80px 100px;
+      background: linear-gradient(to bottom,
+        #0D1E35 0%,
+        #1A2F4A 50%,
+        #2D7DD2 85%,
+        #2D7DD2 100%
+      );
+      font-family: 'Inter', -apple-system, sans-serif;
+      position: relative;
     }
 
-    /* Circuit board pattern overlay */
     .circuit-pattern {
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
+      width: 1200px;
+      height: 630px;
       opacity: 0.4;
-      pointer-events: none;
       z-index: 1;
     }
 
-    /* Radial gradient overlays (matching hero section) */
-    .og-image::before {
-      content: '';
+    .gradient-overlay {
       position: absolute;
       top: 0;
       left: 0;
-      right: 0;
-      bottom: 0;
+      width: 1200px;
+      height: 630px;
       background:
         radial-gradient(circle at 20% 50%, rgba(45, 125, 210, 0.15) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(244, 162, 97, 0.1) 0%, transparent 50%);
-      pointer-events: none;
       z-index: 2;
     }
 
-    /* Content container */
     .content {
-      position: relative;
+      position: absolute;
+      top: 50%;
+      left: 100px;
+      transform: translateY(-60%);
       z-index: 10;
     }
 
@@ -98,108 +91,69 @@
       text-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
     }
 
-    /* Accent bar at bottom */
     .accent-bar {
       position: absolute;
       bottom: 0;
       left: 0;
-      right: 0;
+      width: 1200px;
       height: 10px;
       background: linear-gradient(90deg, #2D7DD2 0%, #F4A261 100%);
       z-index: 15;
     }
 
-    /* Pulsing animations for connection nodes */
     @keyframes nodePulse {
-      0%, 100% {
-        opacity: 0.2;
-        fill: rgba(255, 255, 255, 0.2);
-      }
-      50% {
-        opacity: 1;
-        fill: rgba(255, 255, 255, 0.5);
-      }
+      0%, 100% { opacity: 0.2; fill: rgba(255, 255, 255, 0.2); }
+      50% { opacity: 1; fill: rgba(255, 255, 255, 0.5); }
     }
 
-    .node-pulse-1 {
-      animation: nodePulse 2.5s ease-in-out infinite;
-      animation-delay: 0s;
-    }
-
-    .node-pulse-2 {
-      animation: nodePulse 2.5s ease-in-out infinite;
-      animation-delay: 0.8s;
-    }
-
-    .node-pulse-3 {
-      animation: nodePulse 2.5s ease-in-out infinite;
-      animation-delay: 1.6s;
-    }
+    .node-pulse-1 { animation: nodePulse 2.5s ease-in-out infinite; }
+    .node-pulse-2 { animation: nodePulse 2.5s ease-in-out infinite; animation-delay: 0.8s; }
+    .node-pulse-3 { animation: nodePulse 2.5s ease-in-out infinite; animation-delay: 1.6s; }
   </style>
 </head>
 <body>
-  <div class="og-image">
-    <!-- Circuit board pattern (matching hero section) -->
-    <svg class="circuit-pattern" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
-      <!-- Horizontal traces -->
-      <line x1="0" y1="120" x2="280" y2="120" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
-      <line x1="350" y1="120" x2="600" y2="120" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
-      <line x1="0" y1="280" x2="180" y2="280" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
-      <line x1="250" y1="280" x2="450" y2="280" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
-      <line x1="520" y1="280" x2="800" y2="280" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
-      <line x1="200" y1="450" x2="500" y2="450" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
-      <line x1="580" y1="450" x2="900" y2="450" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
-      <line x1="400" y1="620" x2="700" y2="620" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
-      <line x1="780" y1="620" x2="1200" y2="620" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+  <svg class="circuit-pattern" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" preserveAspectRatio="xMidYMid slice">
+    <line x1="0" y1="120" x2="280" y2="120" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+    <line x1="350" y1="120" x2="600" y2="120" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+    <line x1="0" y1="280" x2="180" y2="280" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+    <line x1="250" y1="280" x2="450" y2="280" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+    <line x1="520" y1="280" x2="800" y2="280" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+    <line x1="200" y1="450" x2="500" y2="450" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+    <line x1="580" y1="450" x2="900" y2="450" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+    <line x1="180" y1="0" x2="180" y2="200" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+    <line x1="180" y1="260" x2="180" y2="450" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+    <line x1="350" y1="50" x2="350" y2="280" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+    <line x1="500" y1="200" x2="500" y2="500" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+    <line x1="700" y1="100" x2="700" y2="350" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+    <line x1="900" y1="250" x2="900" y2="550" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+    <line x1="1050" y1="0" x2="1050" y2="300" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+    <line x1="180" y1="280" x2="280" y2="380" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+    <line x1="500" y1="450" x2="620" y2="570" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+    <circle cx="180" cy="120" r="4" class="node-pulse-1"/>
+    <circle cx="350" cy="120" r="5" class="node-pulse-2"/>
+    <circle cx="180" cy="280" r="4" fill="rgba(255,255,255,0.2)"/>
+    <circle cx="350" cy="280" r="4" class="node-pulse-3"/>
+    <circle cx="500" cy="280" r="5" fill="rgba(255,255,255,0.2)"/>
+    <circle cx="700" cy="280" r="4" class="node-pulse-1"/>
+    <circle cx="500" cy="450" r="5" class="node-pulse-2"/>
+    <circle cx="900" cy="450" r="4" class="node-pulse-3"/>
+    <rect x="270" y="110" width="25" height="25" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" rx="3"/>
+    <rect x="590" y="110" width="30" height="18" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" rx="3"/>
+    <rect x="440" y="270" width="20" height="28" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" rx="3"/>
+    <rect x="870" y="440" width="35" height="22" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" rx="3"/>
+    <circle cx="280" cy="120" r="2" fill="rgba(255,255,255,0.15)"/>
+    <circle cx="250" cy="280" r="2" fill="rgba(255,255,255,0.15)"/>
+    <circle cx="580" cy="450" r="2" fill="rgba(255,255,255,0.15)"/>
+  </svg>
 
-      <!-- Vertical traces -->
-      <line x1="180" y1="0" x2="180" y2="200" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
-      <line x1="180" y1="260" x2="180" y2="450" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
-      <line x1="350" y1="50" x2="350" y2="280" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
-      <line x1="500" y1="200" x2="500" y2="500" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
-      <line x1="700" y1="100" x2="700" y2="350" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
-      <line x1="700" y1="420" x2="700" y2="700" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
-      <line x1="900" y1="250" x2="900" y2="550" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
-      <line x1="1050" y1="0" x2="1050" y2="300" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+  <div class="gradient-overlay"></div>
 
-      <!-- Diagonal connections -->
-      <line x1="180" y1="280" x2="280" y2="380" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
-      <line x1="500" y1="450" x2="620" y2="570" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
-      <line x1="700" y1="280" x2="850" y2="430" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
-
-      <!-- Connection nodes with pulsing -->
-      <circle cx="180" cy="120" r="4" class="node-pulse-1"/>
-      <circle cx="350" cy="120" r="5" class="node-pulse-2"/>
-      <circle cx="180" cy="280" r="4" fill="rgba(255,255,255,0.2)"/>
-      <circle cx="350" cy="280" r="4" class="node-pulse-3"/>
-      <circle cx="500" cy="280" r="5" fill="rgba(255,255,255,0.2)"/>
-      <circle cx="700" cy="280" r="4" class="node-pulse-1"/>
-      <circle cx="500" cy="450" r="5" class="node-pulse-2"/>
-      <circle cx="700" cy="450" r="4" fill="rgba(255,255,255,0.2)"/>
-      <circle cx="900" cy="450" r="4" class="node-pulse-3"/>
-      <circle cx="700" cy="620" r="5" class="node-pulse-1"/>
-
-      <!-- Chip rectangles -->
-      <rect x="270" y="110" width="25" height="25" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" rx="3"/>
-      <rect x="590" y="110" width="30" height="18" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" rx="3"/>
-      <rect x="440" y="270" width="20" height="28" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" rx="3"/>
-      <rect x="870" y="440" width="35" height="22" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" rx="3"/>
-      <rect x="240" y="370" width="22" height="22" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" rx="3"/>
-
-      <!-- Small detail dots -->
-      <circle cx="280" cy="120" r="2" fill="rgba(255,255,255,0.15)"/>
-      <circle cx="250" cy="280" r="2" fill="rgba(255,255,255,0.15)"/>
-      <circle cx="580" cy="450" r="2" fill="rgba(255,255,255,0.15)"/>
-      <circle cx="780" cy="620" r="2" fill="rgba(255,255,255,0.15)"/>
-    </svg>
-
-    <div class="content">
-      <div class="logo">RBK Strategies</div>
-      <h1 class="headline">Operations, Finance<br>& Tech Consulting</h1>
-      <p class="subheadline">Strategic guidance for growing businesses</p>
-    </div>
-
-    <div class="accent-bar"></div>
+  <div class="content">
+    <div class="logo">RBK Strategies</div>
+    <h1 class="headline">Operations, Finance<br>& Tech Consulting</h1>
+    <p class="subheadline">Strategic guidance for growing businesses</p>
   </div>
+
+  <div class="accent-bar"></div>
 </body>
 </html>

@@ -1,0 +1,18 @@
+<svg width="400" height="100" viewBox="0 0 400 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- RBK in bold with accent -->
+  <text x="20" y="65" font-family="Inter, -apple-system, sans-serif" font-size="48" font-weight="800" fill="#0D1E35" letter-spacing="-0.02em">RBK</text>
+
+  <!-- Strategies in regular weight -->
+  <text x="145" y="65" font-family="Inter, -apple-system, sans-serif" font-size="48" font-weight="600" fill="#1A2F4A" letter-spacing="-0.02em">Strategies</text>
+
+  <!-- Accent line under RBK -->
+  <rect x="20" y="75" width="110" height="4" fill="url(#accentGradient)" rx="2"/>
+
+  <!-- Gradient definition -->
+  <defs>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2D7DD2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F4A261;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>

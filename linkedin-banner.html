@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      width: 3168px;
+      height: 792px;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #2D7DD2;
+    }
+
+    body {
+      width: 3168px;
+      height: 792px;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0D1E35 0%, #1A2F4A 50%, #2D7DD2 100%);
+    }
+
+    .circuit-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3168px;
+      height: 792px;
+      opacity: 0.4;
+      z-index: 1;
+    }
+
+    .gradient-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3168px;
+      height: 792px;
+      background:
+        radial-gradient(circle at 20% 50%, rgba(45, 125, 210, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(244, 162, 97, 0.1) 0%, transparent 50%);
+      z-index: 2;
+    }
+
+
+
+    @keyframes nodePulse {
+      0%, 100% { opacity: 0.2; fill: rgba(255, 255, 255, 0.2); }
+      50% { opacity: 1; fill: rgba(255, 255, 255, 0.5); }
+    }
+
+    .node-pulse-1 { animation: nodePulse 2.5s ease-in-out infinite; }
+    .node-pulse-2 { animation: nodePulse 2.5s ease-in-out infinite; animation-delay: 0.8s; }
+    .node-pulse-3 { animation: nodePulse 2.5s ease-in-out infinite; animation-delay: 1.6s; }
+  </style>
+</head>
+<body>
+  <svg class="circuit-pattern" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3168 792" preserveAspectRatio="xMidYMid slice">
+    <!-- Horizontal lines -->
+    <line x1="0" y1="80" x2="350" y2="80" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+    <line x1="450" y1="80" x2="750" y2="80" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+    <line x1="0" y1="180" x2="280" y2="180" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+    <line x1="350" y1="180" x2="550" y2="180" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+    <line x1="650" y1="180" x2="1000" y2="180" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+    <line x1="300" y1="280" x2="650" y2="280" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+    <line x1="750" y1="280" x2="1100" y2="280" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+
+    <!-- Vertical lines -->
+    <line x1="250" y1="0" x2="250" y2="150" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+    <line x1="250" y1="200" x2="250" y2="330" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+    <line x1="450" y1="30" x2="450" y2="200" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+    <line x1="650" y1="120" x2="650" y2="350" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+    <line x1="900" y1="60" x2="900" y2="250" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+    <line x1="1150" y1="150" x2="1150" y2="380" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+    <line x1="1350" y1="0" x2="1350" y2="220" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+
+    <!-- Diagonal lines -->
+    <line x1="250" y1="180" x2="350" y2="280" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+    <line x1="650" y1="280" x2="780" y2="360" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+
+    <!-- Nodes with pulse animation -->
+    <circle cx="250" cy="80" r="4" class="node-pulse-1"/>
+    <circle cx="450" cy="80" r="5" class="node-pulse-2"/>
+    <circle cx="250" cy="180" r="4" fill="rgba(255,255,255,0.2)"/>
+    <circle cx="450" cy="180" r="4" class="node-pulse-3"/>
+    <circle cx="650" cy="180" r="5" fill="rgba(255,255,255,0.2)"/>
+    <circle cx="900" cy="180" r="4" class="node-pulse-1"/>
+    <circle cx="650" cy="280" r="5" class="node-pulse-2"/>
+    <circle cx="1100" cy="280" r="4" class="node-pulse-3"/>
+
+    <!-- Rectangles (circuit components) -->
+    <rect x="340" y="70" width="25" height="25" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" rx="3"/>
+    <rect x="740" y="70" width="30" height="18" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" rx="3"/>
+    <rect x="540" y="170" width="20" height="28" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" rx="3"/>
+    <rect x="1070" y="270" width="35" height="22" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" rx="3"/>
+
+    <!-- Small connection dots -->
+    <circle cx="350" cy="80" r="2" fill="rgba(255,255,255,0.15)"/>
+    <circle cx="350" cy="180" r="2" fill="rgba(255,255,255,0.15)"/>
+    <circle cx="750" cy="280" r="2" fill="rgba(255,255,255,0.15)"/>
+  </svg>
+
+  <div class="gradient-overlay"></div>
+</body>
+</html>

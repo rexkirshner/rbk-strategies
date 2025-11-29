@@ -1,12 +1,12 @@
 <svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
   <!-- RBK large and centered -->
-  <text x="250" y="240" font-family="Inter, -apple-system, sans-serif" font-size="160" font-weight="800" fill="#0D1E35" letter-spacing="-0.02em" text-anchor="middle">RBK</text>
+  <text x="250" y="250" font-family="Inter, -apple-system, sans-serif" font-size="180" font-weight="800" fill="#0D1E35" letter-spacing="-0.02em" text-anchor="middle">RBK</text>
 
   <!-- Strategies smaller below -->
-  <text x="250" y="325" font-family="Inter, -apple-system, sans-serif" font-size="48" font-weight="600" fill="#1A2F4A" letter-spacing="-0.01em" text-anchor="middle">STRATEGIES</text>
+  <text x="250" y="340" font-family="Inter, -apple-system, sans-serif" font-size="52" font-weight="600" fill="#1A2F4A" letter-spacing="-0.01em" text-anchor="middle">STRATEGIES</text>
 
   <!-- Accent line -->
-  <rect x="90" y="350" width="320" height="10" fill="url(#accentGradient)" rx="5"/>
+  <rect x="75" y="370" width="350" height="12" fill="url(#accentGradient)" rx="6"/>
 
   <!-- Gradient definition -->
   <defs>

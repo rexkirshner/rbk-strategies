@@ -1,6 +1,6 @@
 # Project Context
 
-**Last Updated:** [Auto-updated]
+**Last Updated:** 2025-12-20
 **Purpose:** Project orientation and high-level architecture
 
 ---
@@ -212,9 +212,9 @@ npm run preview
 
 **Project URLs:**
 (Also available in STATUS.md Quick Reference)
-- **Production:** TBD (will be custom domain)
-- **Staging:** TBD (*.pages.dev)
-- **Repository:** TBD (not initialized yet)
+- **Production:** https://rbkstrategies.com
+- **Staging:** https://rbk-strategies.pages.dev
+- **Repository:** https://github.com/rexkirshner/rbk-strategies
 
 ---
 
@@ -251,23 +251,26 @@ npm run preview
 ## Important Context & Gotchas
 
 **Dependencies:**
-- [Critical dependency 1 and why it matters]
-- [External service requirements]
+- Astro 5 with @astrojs/cloudflare adapter for hybrid deployment
+- Server mode required for /api/contact endpoint (serverless function)
 
 **Known Limitations:**
-- [Limitation 1 and workaround if any]
-- [Limitation 2]
+- Contact form requires Resend API key (not yet configured)
+- No test suite configured (manual testing only)
 
 **Common Pitfalls:**
-- [Gotcha 1 that developers should know]
-- [Gotcha 2]
+- Chrome headless OG image generation has viewport quirks - set HTML background color as fallback
+- Astro server mode requires `export const prerender = true` on static pages
+- Cloudflare Pages requires build config in dashboard (npm run build, dist output)
+- Multiple dev servers can run simultaneously - check `lsof -i :4321` before starting
 
 **Performance Considerations:**
-- [If any critical performance constraints]
+- Target Lighthouse 95+ across all metrics
+- Static site with minimal JavaScript for maximum performance
 
 **Security Notes:**
 - Never commit credentials (use .env.local)
-- [Any other security considerations]
+- Resend API key must be set in Cloudflare Pages environment variables
 
 ---
 
@@ -281,7 +284,7 @@ npm run preview
 - Performance - Lighthouse 95+ across all metrics
 
 **Brand Direction:**
-- Primary color: Deep Navy (#1E3A5F) - Trust, expertise
+- Primary color: Deep Navy (#0D1E35) - Trust, expertise (darkened in Session 7)
 - Secondary color: Corporate Blue (#2D7DD2) - Technology, innovation
 - Accent color: Warm Amber (#F4A261) - Approachability, energy
 - Typography: Inter font family for headings and body

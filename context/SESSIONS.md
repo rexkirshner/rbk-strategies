@@ -1210,3 +1210,99 @@ Currently regenerating OG image manually via Chrome CLI. Should create `scripts/
 
 ---
 
+## Session 11 | 2025-12-20 | System Upgrade & Documentation Refresh
+
+**Duration:** 1h | **Focus:** AI Context System upgrade, documentation update | **Status:** ✅ Complete
+
+### TL;DR
+
+Upgraded AI Context System from v3.4.0 to v3.6.0, migrated CLAUDE.md to project root per v3.x structure, cleaned up OG image debugging artifacts, and refreshed all stale documentation. Project remains in maintenance mode with 3 unpushed commits ready for deployment.
+
+### Accomplishments
+
+- ✅ Upgraded AI Context System v3.4.0 → v3.6.0 (27 files updated)
+- ✅ Migrated CLAUDE.md to project root with RBK Strategies-specific content
+- ✅ Removed redundant context/claude.md
+- ✅ Cleaned up 6 OG image debugging files from Session 10
+- ✅ Updated STATUS.md with current state
+- ✅ Updated .context-config.json with correct URLs and metadata
+- ✅ Created Session 11 entry in SESSIONS.md
+
+### Problem Solved
+
+**Issue:** Documentation was 21-24 days stale after project went into maintenance mode. AI Context System was outdated (v3.4.0 vs v3.6.0). CLAUDE.md was in wrong location (context/ instead of project root). Debugging artifacts from Session 10 were cluttering working directory.
+
+**Constraints:**
+- Must preserve project-specific content during upgrade
+- Cannot push to GitHub without explicit approval
+- Backup should be kept until upgrade verified
+
+**Approach:**
+1. Ran /update-context-system to upgrade from v3.4.0 to v3.6.0
+2. Created new CLAUDE.md at project root with RBK Strategies-specific content
+3. Removed redundant context/claude.md and context/CLAUDE.md
+4. Verified debugging files against Session 10 documentation before cleanup
+5. Updated all stale documentation files
+
+**Why this approach:** The v3.x structure expects CLAUDE.md at project root where Claude Code auto-loads it. Documentation refresh ensures context accuracy for future sessions.
+
+### Decisions
+
+- **CLAUDE.md Location:** Project root over context/ folder → Claude Code auto-loads from project root, v3.x standard
+- **Debugging File Cleanup:** Remove after verification → Session 10 documented these as abandoned attempts
+- **Backup Retention:** Keep .claude-backup-20251220-120554/ until upgrade verified → Safety net
+
+### Files
+
+**NEW:**
+- `CLAUDE.md` - Claude Code entry point at project root with RBK Strategies customizations
+
+**MOD:**
+- `context/STATUS.md` - Updated Quick Reference, accomplishments, session references
+- `context/.context-config.json` - Added production URLs, updated metadata to v3.6.0
+- `context/SESSIONS.md` - Added Session 11 entry
+- All `.claude/commands/*.md` - Updated to v3.6.0
+- All `scripts/*.sh` - Updated helper scripts
+
+**DEL:**
+- `context/claude.md` - Removed (redundant with new CLAUDE.md)
+- `og-image-template-fixed.html` - Debugging artifact from Session 10
+- `public/og-check.png` - Debugging artifact
+- `public/og-downloaded.jpg` - Debugging artifact
+- `public/og-image-cropped.jpg` - Debugging artifact
+- `public/og-image-final.jpg` - Debugging artifact
+- `public/og-image-temp.jpg` - Debugging artifact
+
+### Git Operations
+
+**Commits:** 1 commit this session
+- aa172f6: chore: upgrade AI Context System v3.4.0 → v3.6.0
+
+**Total Unpushed:** 3 commits
+- f18afc7 (Session 10): fix: resolve OG image white gap issue
+- e8676b5 (Session 10): feat: extend circuit board overlay to full image height
+- aa172f6 (Session 11): chore: upgrade AI Context System v3.4.0 → v3.6.0
+
+**Pushed:** NO
+**Approval:** Not requested - user has not said "push"
+
+### Tests & Build
+
+**Tests:** Not run (no test suite)
+**Build:** Not run this session (no code changes)
+**Errors:** None
+
+### Next Session
+
+**Priority:** Push commits when ready for production deployment
+
+**Potential Actions:**
+1. Push 3 unpushed commits to GitHub
+2. Verify OG image appears correctly on social media
+3. Check Google Search Console indexing status
+4. Consider setting up Resend API for contact form
+
+**Blockers:** None
+
+---
+

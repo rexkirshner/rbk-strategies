@@ -6,9 +6,9 @@
     "type": "web-app",
     "initialized": "2025-11-25",
     "urls": {
-      "production": "TBD",
-      "staging": "TBD",
-      "repository": "TBD"
+      "production": "https://rbkstrategies.com",
+      "staging": "https://rbk-strategies.pages.dev",
+      "repository": "https://github.com/rexkirshner/rbk-strategies"
     },
     "techStack": "Astro, TypeScript, Cloudflare Pages",
     "commands": {
@@ -96,7 +96,7 @@
       "SESSIONS.md"
     ],
     "aiHeaders": [
-      "claude.md"
+      "CLAUDE.md"
     ],
     "optional": [
       "PRD.md",
@@ -238,8 +238,8 @@
   },
   "metadata": {
     "createdAt": "2025-11-25",
-    "lastUpdated": "2025-11-25",
-    "configVersion": "3.0.0",
+    "lastUpdated": "2025-12-20",
+    "configVersion": "3.6.0",
     "notes": "Configuration for AI Context System"
   },
   "metrics": {

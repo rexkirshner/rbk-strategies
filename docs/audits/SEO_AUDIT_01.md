@@ -3,11 +3,13 @@
 | Field | Value |
 |-------|-------|
 | Date | 2025-12-20 |
+| Last Updated | 2025-12-20 |
 | Repository | rbk-strategies |
 | Framework | Astro 5.16.0 |
 | Rendering | Hybrid SSR (Server mode with prerendered homepage) |
 | Hosting | Cloudflare Pages |
 | Primary Goal | Improve visibility for "Rex Kirshner" name searches |
+| Status | **Phase 1 & 2 Complete** |
 
 **Assumptions:**
 - Site is live at https://rbkstrategies.com
@@ -19,24 +21,32 @@
 
 ## Executive Summary
 
-**Overall SEO Health: 7/10** - Strong technical foundation with critical gaps for personal name visibility.
+**Overall SEO Health: 9/10** - Strong technical foundation with comprehensive personal name visibility.
 
-**Biggest Wins Already in Place:**
+**Completed Improvements (Session 11):**
+- ✅ Page title now includes "Rex Kirshner"
+- ✅ Meta description mentions personal name and Stanford credential
+- ✅ Standalone Person schema added to @graph (first entity for priority)
+- ✅ WebPage schema includes author property referencing Person
+- ✅ Sitemap cleaned up (removed hash fragments, updated dates, added image)
+- ✅ LocalBusiness placeholder phone removed
+- ✅ og:image converted to absolute URL
+- ✅ LinkedIn company page added to footer
+
+**Already in Place:**
 - Comprehensive JSON-LD structured data with @graph architecture
 - Proper canonical URLs and Open Graph implementation
 - rel="me" identity links for cross-site verification
 - "Founded by Rex Kirshner" prominently in About section content
 - Profile photo with descriptive alt text
 
-**Critical Issues for "Rex Kirshner" Visibility:**
-1. **P0**: Page title completely omits "Rex Kirshner" - the #1 ranking signal
-2. **P0**: Meta description doesn't mention the personal name
-3. **P0**: Person schema is only nested under Organization, not a standalone entity
-4. **P1**: Sitemap contains hash fragments (ignored by Google) and stale dates
-5. **P1**: LocalBusiness schema has placeholder phone number (appears spammy)
-6. **P1**: og:image uses relative URL instead of absolute
+**Remaining Opportunities (Phase 3):**
+1. **P2**: FAQ schema for service questions (rich results opportunity)
+2. **P2**: Dedicated /about page for Rex Kirshner (high impact)
+3. **P2**: Testimonials section with Review schema
+4. **P3**: Dynamic sitemap generation
 
-**Quick Win Potential:** Implementing P0 fixes could significantly improve "Rex Kirshner" search rankings within 2-4 weeks.
+**Expected Impact:** With P0/P1 fixes implemented, "Rex Kirshner" search rankings should improve within 2-4 weeks of Google re-crawling.
 
 ---
 
@@ -71,19 +81,19 @@
 
 ## Findings Table
 
-| Priority | Issue | Impact | Location |
-|----------|-------|--------|----------|
-| P0 | Title tag omits "Rex Kirshner" | CRITICAL - Primary ranking signal missing | `src/pages/index.astro:21` |
-| P0 | Meta description omits personal name | CRITICAL - Second most important signal | `src/pages/index.astro:22` |
-| P0 | Person schema only nested, not standalone | HIGH - Weakens personal brand signals | `src/layouts/BaseLayout.astro:58-68` |
-| P1 | Sitemap contains hash fragment URLs | MEDIUM - Wasted crawl budget | `public/sitemap.xml:14-34` |
-| P1 | Sitemap lastmod dates are stale | MEDIUM - Signals inactive site | `public/sitemap.xml:9` |
-| P1 | LocalBusiness has placeholder phone | MEDIUM - Appears spammy to Google | `src/layouts/BaseLayout.astro:79` |
-| P1 | og:image URL is relative | MEDIUM - May not resolve on social shares | `src/layouts/BaseLayout.astro:188` |
-| P1 | H1 doesn't mention founder name | MEDIUM - Missed relevance signal | `src/components/sections/Hero.astro:70` |
-| P2 | No FAQ schema for service questions | LOW - Missing rich result opportunity | N/A |
-| P2 | Missing BreadcrumbList schema | LOW - Missing navigation rich results | N/A |
-| P2 | No author property on WebPage | LOW - Weaker content attribution | `src/layouts/BaseLayout.astro:137-149` |
+| Priority | Issue | Impact | Location | Status |
+|----------|-------|--------|----------|--------|
+| P0 | Title tag omits "Rex Kirshner" | CRITICAL | `src/pages/index.astro` | ✅ DONE |
+| P0 | Meta description omits personal name | CRITICAL | `src/pages/index.astro` | ✅ DONE |
+| P0 | Person schema only nested, not standalone | HIGH | `src/layouts/BaseLayout.astro` | ✅ DONE |
+| P1 | Sitemap contains hash fragment URLs | MEDIUM | `public/sitemap.xml` | ✅ DONE |
+| P1 | Sitemap lastmod dates are stale | MEDIUM | `public/sitemap.xml` | ✅ DONE |
+| P1 | LocalBusiness has placeholder phone | MEDIUM | `src/layouts/BaseLayout.astro` | ✅ DONE |
+| P1 | og:image URL is relative | MEDIUM | `src/layouts/BaseLayout.astro` | ✅ DONE |
+| P1 | H1 doesn't mention founder name | MEDIUM | `src/components/sections/Hero.astro` | ⏭️ SKIPPED |
+| P2 | No FAQ schema for service questions | LOW | N/A | ⏳ BACKLOG |
+| P2 | Missing BreadcrumbList schema | LOW | N/A | ⏳ BACKLOG |
+| P2 | No author property on WebPage | LOW | `src/layouts/BaseLayout.astro` | ✅ DONE |
 
 ---
 
@@ -429,36 +439,36 @@ Author attribution strengthens the connection between content and creator, impro
 
 ## Implementation Roadmap
 
-### Phase 1: Quick Wins (< 1 day each)
+### Phase 1: Quick Wins ✅ COMPLETE
 
-| Task | File | Effort | Impact |
-|------|------|--------|--------|
-| Add "Rex Kirshner" to page title | `src/pages/index.astro:21` | 5 min | HIGH |
-| Add "Rex Kirshner" to meta description | `src/pages/index.astro:22` | 5 min | HIGH |
-| Remove placeholder phone from LocalBusiness | `src/layouts/BaseLayout.astro:79` | 2 min | MEDIUM |
-| Fix og:image to absolute URL | `src/layouts/BaseLayout.astro:188` | 5 min | MEDIUM |
-| Update sitemap.xml (remove fragments, update date) | `public/sitemap.xml` | 10 min | MEDIUM |
+| Task | File | Status |
+|------|------|--------|
+| Add "Rex Kirshner" to page title | `src/pages/index.astro` | ✅ Done |
+| Add "Rex Kirshner" to meta description | `src/pages/index.astro` | ✅ Done |
+| Remove placeholder phone from LocalBusiness | `src/layouts/BaseLayout.astro` | ✅ Done |
+| Fix og:image to absolute URL | `src/layouts/BaseLayout.astro` | ✅ Done |
+| Update sitemap.xml (remove fragments, update date) | `public/sitemap.xml` | ✅ Done |
 
-**Estimated total: 30 minutes**
+**Commits:** `4edf1bb`, `1d4e561`, `734a980`
 
-### Phase 2: Medium Effort (1-3 hours each)
+### Phase 2: Medium Effort ✅ COMPLETE
 
-| Task | File | Effort | Impact |
-|------|------|--------|--------|
-| Add standalone Person schema to @graph | `src/layouts/BaseLayout.astro` | 1 hour | HIGH |
-| Add "Rex Kirshner" to hero section | `src/components/sections/Hero.astro` | 30 min | MEDIUM |
-| Add author property to WebPage | `src/layouts/BaseLayout.astro` | 15 min | LOW |
+| Task | File | Status |
+|------|------|--------|
+| Add standalone Person schema to @graph | `src/layouts/BaseLayout.astro` | ✅ Done |
+| Add "Rex Kirshner" to hero section | `src/components/sections/Hero.astro` | ⏭️ Skipped (name in title/meta/schema sufficient) |
+| Add author property to WebPage | `src/layouts/BaseLayout.astro` | ✅ Done |
 
-**Estimated total: 2 hours**
+**Commits:** `c528021`
 
-### Phase 3: Larger Initiatives (3+ hours)
+### Phase 3: Larger Initiatives ⏳ BACKLOG
 
-| Task | Effort | Impact |
-|------|--------|--------|
-| Implement FAQ schema with 5+ Q&A pairs | 2-3 hours | MEDIUM |
-| Add dynamic sitemap generation | 3-4 hours | LOW |
-| Create dedicated /about page for Rex Kirshner | 4-6 hours | HIGH |
-| Add testimonials section with Review schema | 4-6 hours | MEDIUM |
+| Task | Effort | Impact | Status |
+|------|--------|--------|--------|
+| Implement FAQ schema with 5+ Q&A pairs | 2-3 hours | MEDIUM | Not started |
+| Add dynamic sitemap generation | 3-4 hours | LOW | Not started |
+| Create dedicated /about page for Rex Kirshner | 4-6 hours | HIGH | Not started |
+| Add testimonials section with Review schema | 4-6 hours | MEDIUM | Not started |
 
 ---
 
@@ -520,5 +530,7 @@ curl -s https://rbkstrategies.com | grep -E 'og:(title|description|image)'
 ---
 
 **Report generated:** 2025-12-20
+**Last updated:** 2025-12-20 (Session 11)
 **Auditor:** Claude Code (AI-assisted)
-**Next review:** After Phase 1 implementation
+**Status:** Phase 1 & 2 complete, Phase 3 backlogged
+**Next review:** After deployment and Google re-crawl (2-4 weeks)

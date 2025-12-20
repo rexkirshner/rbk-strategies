@@ -46,6 +46,22 @@ else
 fi
 ```
 
+### Step 0.5: Find Context Folder
+
+**ACTION:** Source the context folder detection script and find the context directory:
+
+```bash
+# Load context folder detection (v3.5.0+ - fixes BUG-6)
+source "$(dirname "${BASH_SOURCE[0]}")/../scripts/find-context-folder.sh" || exit 1
+CONTEXT_DIR=$(find_context_folder) || exit 1
+
+echo "✅ Found context at: $CONTEXT_DIR"
+```
+
+**Why this matters:** Allows command to work from subdirectories (backend/, src/, etc.) by searching up to 2 parent directories.
+
+---
+
 ### Step 1: Run Validation Script
 
 **ACTION:** Use the Bash tool to run the validation script:
@@ -77,7 +93,7 @@ The script performs these checks:
 🔍 Validating AI Context System...
 
 📄 Checking required documentation files...
-  ✅ context/claude.md (AI header)
+  ✅ CLAUDE.md (AI entry point - auto-loaded)
   ✅ context/CONTEXT.md
   ✅ context/STATUS.md (with Quick Reference section)
   ✅ context/DECISIONS.md
@@ -576,5 +592,5 @@ Validation succeeds when:
 
 ---
 
-**Version:** 3.0.0
+**Version:** 3.6.0
 **Updated:** v2.3.1 - Added feedback system

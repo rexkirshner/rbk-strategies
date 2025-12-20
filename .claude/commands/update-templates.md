@@ -60,7 +60,7 @@ else
     "DECISIONS.template.md"
     "SESSIONS.template.md"
     "CODE_MAP.template.md"
-    "claude.md.template"
+    "CLAUDE.md.template"
     "cursor.md.template"
     "aider.md.template"
     "codex.md.template"
@@ -106,11 +106,30 @@ declare -A FILE_MAPPINGS=(
   ["DECISIONS.template.md"]="context/DECISIONS.md"
   ["SESSIONS.template.md"]="context/SESSIONS.md"
   ["CODE_MAP.template.md"]="context/CODE_MAP.md"
-  ["claude.md.template"]="context/claude.md"
+  ["CLAUDE.md.template"]="CLAUDE.md"
 )
 
 UPDATES_AVAILABLE=0
 FILES_TO_UPDATE=()
+
+# Special check for CLAUDE.md migration (v3.6.0+)
+if [ -f "context/claude.md" ] && [ ! -f "CLAUDE.md" ]; then
+  echo ""
+  echo "⚠️  MIGRATION NEEDED: Found old location context/claude.md"
+  echo "   CLAUDE.md should be at project root for auto-loading by Claude Code."
+  echo ""
+  echo "   Options:"
+  echo "     1. Move existing file: mv context/claude.md ./CLAUDE.md"
+  echo "     2. Create fresh from template: cp templates/CLAUDE.md.template ./CLAUDE.md"
+  echo ""
+  read -p "   Move existing file now? [y/N]: " -n 1 -r
+  echo ""
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    mv "context/claude.md" "CLAUDE.md"
+    echo "   ✅ Moved to ./CLAUDE.md"
+    echo ""
+  fi
+fi
 
 for template_file in "${!FILE_MAPPINGS[@]}"; do
   context_file="${FILE_MAPPINGS[$template_file]}"

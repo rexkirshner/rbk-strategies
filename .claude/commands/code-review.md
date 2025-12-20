@@ -195,6 +195,8 @@ Use specialized checklists for thoroughness:
 
 ### Step 6: Generate Comprehensive Report
 
+**MANDATORY: You MUST save the report to a file. Do NOT just display it in chat.**
+
 Create detailed report in `artifacts/code-reviews/session-[N]-review.md`:
 
 ```markdown
@@ -361,6 +363,34 @@ Create detailed report in `artifacts/code-reviews/session-[N]-review.md`:
 - [✅] Suggestions provided
 - [✅] No changes made to code
 - [✅] Report is actionable
+```
+
+**CRITICAL REQUIREMENT**: You MUST save the report to a file. This is NOT optional.
+
+**ACTION REQUIRED - Do this NOW after completing your analysis:**
+
+1. Create the directory: `mkdir -p artifacts/code-reviews`
+2. Determine the session number from SESSIONS.md
+3. Use the Write tool to save the complete report to `artifacts/code-reviews/session-[N]-review.md`
+
+The report file MUST contain:
+- All findings from your analysis (not a summary)
+- Actual issue details, file locations, and line numbers
+- The complete markdown structure shown in Step 6
+- Real values replacing all `[N]`, `[YYYY-MM-DD]`, and other placeholders
+
+**DO NOT:**
+- Skip saving the file
+- Only display the report in chat
+- Save a template with unfilled placeholders
+- Save a summary instead of the full report
+
+**Example filename:** `artifacts/code-reviews/session-14-review.md`
+
+After saving, confirm with:
+```
+✅ Report saved to: artifacts/code-reviews/session-[N]-review.md
+📄 You can view the detailed report at: artifacts/code-reviews/session-[N]-review.md
 ```
 
 ### Step 7: Report Completion
@@ -729,5 +759,19 @@ User runs this when they have time. Be thorough:
 
 ---
 
-**Version:** 3.4.0
-**Updated:** v3.4.0 - Added Step 8: Integration & Actionability (TodoWrite generation, context integration, review history, comparison)
+## Final Checklist Before Completing
+
+Before saying the review is complete, verify:
+
+- [ ] **Report file saved** to `artifacts/code-reviews/session-[N]-review.md`
+- [ ] Report contains actual findings (not placeholders)
+- [ ] All critical and high priority issues documented
+- [ ] Grade assigned with justification
+- [ ] No code changes were made
+
+**If the report file does not exist, the review is NOT complete.**
+
+---
+
+**Version:** 3.6.0
+**Updated:** v3.6.0 - Strengthened requirement to save report file to artifacts/

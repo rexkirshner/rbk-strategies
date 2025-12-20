@@ -10,9 +10,9 @@
 
 ## Project Identity
 
-**[FILL: Project Name]** - [FILL: One-line description]
+**RBK Strategies** - Professional single-page consulting website for business operations, finance, and technology consulting.
 
-**Tech Stack:** [FILL: e.g., Next.js 15, TypeScript, PostgreSQL, Vercel]
+**Tech Stack:** Astro 5, TypeScript, Cloudflare Pages
 
 **Current Phase:** See [STATUS.md](./context/STATUS.md) for active tasks and project state
 
@@ -81,8 +81,8 @@ Just do the work directly - no planning overhead needed.
 5. Verify - don't assume
 
 **Common Checks:**
-- [FILL: e.g., "Build cache issues (delete .next and rebuild)"]
-- [FILL: e.g., "Conflicting dev servers"]
+- Astro build cache issues (delete dist/ and rebuild)
+- Multiple dev servers running (check `lsof -i :4321`)
 - Browser console errors
 - Recent git changes: `git log --oneline -5`
 
@@ -94,7 +94,7 @@ Just do the work directly - no planning overhead needed.
 2. Check for console errors/warnings
 3. Test desktop and mobile if UI involved
 4. Confirm no unintended side effects
-5. Build still works
+5. Build still works (`npm run build`)
 
 ---
 
@@ -131,16 +131,26 @@ When making architectural, technical, or process decisions, ask:
 
 ## Project-Specific Notes
 
-<!-- FILL: Add project-specific constraints, gotchas, or critical context -->
-
 **Key Constraints:**
-- [FILL: e.g., "Must support IE11", "No external API calls from client"]
+- Static site deployed to Cloudflare Pages
+- Single-page architecture (all sections on one scrollable page)
+- No backend/database (static HTML/CSS/JS only)
+- Server mode enabled for /api/contact endpoint (serverless function)
 
 **Common Gotchas:**
-- [FILL: e.g., "Auth tokens expire after 1 hour", "Cache invalidation requires full rebuild"]
+- Chrome headless OG image generation has viewport quirks (set HTML background color as fallback)
+- Astro server mode requires `export const prerender = true` on static pages
+- Cloudflare Pages requires build config in dashboard (npm run build, dist output)
 
 **Integration Points:**
-- [FILL: e.g., "Stripe webhooks on /api/webhooks/stripe"]
+- Formspree/Cloudflare Workers for form submissions
+- Calendly embed for appointment scheduling
+- Resend API for contact form emails (requires API key)
+
+**Brand Colors:**
+- Primary: Deep Navy (#0D1E35)
+- Secondary: Corporate Blue (#2D7DD2)
+- Accent: Warm Amber (#F4A261)
 
 ---
 

@@ -253,26 +253,72 @@ echo ""
 - Decisions linked to DECISIONS.md - Full rationale available
 - Structured but comprehensive (40-60 lines, not 10 or 190)
 
-**File Size Warning:**
+**Auto-Archiving Check (v3.5.0 - MODULE-102):**
 
 ```bash
-# Check SESSIONS.md size
+# Check SESSIONS.md size and offer archiving (v3.5.0+)
 echo "Checking SESSIONS.md file size..."
 SESSIONS_LINES=$(wc -l < "$CONTEXT_DIR/SESSIONS.md" | tr -d ' ')
 
-if [ "$SESSIONS_LINES" -gt 5000 ]; then
-  echo ""
-  echo "⚠️  SESSIONS.md is large ($SESSIONS_LINES lines)"
-  echo ""
-  echo "Recommendation: Consider archiving old sessions:"
-  echo "  • Move sessions 1-50 to artifacts/sessions/archive-2024-Q4.md"
-  echo "  • Keep only recent 50-100 sessions in main file"
-  echo ""
-  echo "Benefits:"
-  echo "  • Faster file operations"
-  echo "  • Better performance with Edit/Read tools"
-  echo "  • Historical sessions preserved in archives"
-  echo ""
+if [ "$SESSIONS_LINES" -gt 2000 ]; then
+  # Check if user has disabled auto-archiving
+  if [ -f "$CONTEXT_DIR/.no-archive" ]; then
+    echo ""
+    echo "ℹ️  Auto-archiving disabled for this project"
+    echo "   SESSIONS.md is large ($SESSIONS_LINES lines) but archiving is skipped"
+    echo "   To re-enable: rm $CONTEXT_DIR/.no-archive"
+    echo ""
+  else
+    echo ""
+    echo "📦 SESSIONS.md is large ($SESSIONS_LINES lines)"
+    echo "   Archiving old sessions improves performance."
+    echo ""
+    read -p "Archive old sessions (keep last 10)? [Y/n] " -n 1 -r
+    echo
+
+    if [[ $REPLY =~ ^[Yy]$ ]] || [[ -z $REPLY ]]; then
+      echo ""
+      echo "🗄️  Archiving old sessions..."
+      bash "$(dirname "$CONTEXT_DIR")/scripts/archive-sessions-helper.sh" --keep 10 --context "$CONTEXT_DIR"
+
+    if [ $? -eq 0 ]; then
+      echo "✅ Old sessions archived successfully"
+      echo ""
+      # Refresh line count after archiving
+      SESSIONS_LINES=$(wc -l < "$CONTEXT_DIR/SESSIONS.md" | tr -d ' ')
+      echo "📊 SESSIONS.md now has $SESSIONS_LINES lines"
+    else
+      echo ""
+      echo "❌ Archiving failed!"
+      echo ""
+      echo "⚠️  IMPORTANT: Check your SESSIONS.md file"
+      echo "   • Backup available at: $CONTEXT_DIR/SESSIONS.md.backup"
+      echo "   • To restore: cp $CONTEXT_DIR/SESSIONS.md.backup $CONTEXT_DIR/SESSIONS.md"
+      echo "   • Verify SESSIONS.md has correct content before proceeding"
+      echo ""
+      echo "   Possible causes:"
+      echo "   - Disk full (check available space)"
+      echo "   - Permissions issue (check file permissions)"
+      echo "   - Corrupted SESSIONS.md format"
+      echo ""
+      echo "   Recommended: Fix the issue and run archiving manually:"
+      echo "   bash scripts/archive-sessions-helper.sh --keep 10 --context $CONTEXT_DIR"
+      echo ""
+    fi
+    else
+      echo "Skipped archiving (file will continue growing)"
+      echo ""
+      # Offer to disable future prompts
+      read -p "Don't ask again? [y/N] " -n 1 -r
+      echo
+      if [[ $REPLY =~ ^[Yy]$ ]]; then
+        touch "$CONTEXT_DIR/.no-archive"
+        echo "✅ Auto-archiving disabled for this project"
+        echo "   To re-enable: rm $CONTEXT_DIR/.no-archive"
+      fi
+    fi
+    echo ""
+  fi
 fi
 
 echo "✅ Session entry ready to append"
@@ -743,5 +789,5 @@ echo ""
 
 ---
 
-**Version:** 3.1.0
+**Version:** 3.6.0
 **Updated:** v3.1.0 - Removed all command substitution, added progress indicators, implemented append-only SESSIONS.md strategy, added git repo checks, added file size warnings

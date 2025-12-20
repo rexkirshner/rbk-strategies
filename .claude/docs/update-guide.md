@@ -25,7 +25,7 @@ Comprehensive guide for updating the AI Context System to latest versions.
 
 **Templates Updated:**
 - `CODE_STYLE.template.md` - Protected Core Principles (65+ lines)
-- `claude.md.template` - Marked entire file as READ-ONLY
+- `CLAUDE.md.template` - AI entry point (auto-loaded at project root)
 - `CONTEXT.template.md` - Protected 3 critical structural sections
 
 **Impact:** Prevents 80-90% of template structure errors
@@ -61,7 +61,7 @@ Comprehensive guide for updating the AI Context System to latest versions.
 
 **Problem Solved:** DECISIONS.md underused - only 2 entries despite major architectural decisions.
 
-**Solution:** Added comprehensive guidance to `claude.md.template`:
+**Solution:** Added comprehensive guidance to `CLAUDE.md.template`:
 
 - When to document decisions (5 categories with examples)
 - DECISIONS.md format example with metrics
@@ -70,7 +70,7 @@ Comprehensive guide for updating the AI Context System to latest versions.
 
 **Impact:** Better architectural decision capture and context preservation
 
-**To Adopt:** Run `/update-templates` to get decision guidance in `context/claude.md`.
+**To Adopt:** Run `/update-templates` to get decision guidance in `CLAUDE.md`.
 
 ---
 
@@ -104,7 +104,7 @@ Comprehensive guide for updating the AI Context System to latest versions.
 **Manual (run `/update-templates` after update):**
 - ⏸️ Template markers in CODE_STYLE.md
 - ⏸️ Template markers in CONTEXT.md
-- ⏸️ Decision guidance in claude.md
+- ⏸️ Decision guidance in CLAUDE.md
 
 **Recommended Upgrade Steps:**
 1. Run `/update-context-system` (updates commands & scripts)
@@ -393,8 +393,8 @@ unzip /tmp/latest.zip -d /tmp/
 # Compare versions
 diff -u .claude/commands/save-context.md /tmp/ai-context-system-main/.claude/commands/save-context.md
 
-# Compare templates
-diff -u context/CLAUDE.md /tmp/ai-context-system-main/templates/CLAUDE.template.md
+# Compare templates (CLAUDE.md is at project root in v3.6.0+)
+diff -u ./CLAUDE.md /tmp/ai-context-system-main/templates/CLAUDE.md.template
 ```
 
 No changes made. Just preview.
@@ -638,8 +638,8 @@ cp /tmp/acs-update/.claude/commands/* .claude/commands/
 ### 4. Review Template Changes
 
 ```bash
-# Compare each template
-diff -u context/CLAUDE.md /tmp/acs-update/templates/CLAUDE.template.md
+# Compare each template (CLAUDE.md is at project root in v3.6.0+)
+diff -u ./CLAUDE.md /tmp/acs-update/templates/CLAUDE.md.template
 diff -u context/CODE_STYLE.md /tmp/acs-update/templates/CODE_STYLE.template.md
 
 # Manually apply changes you want

@@ -29,6 +29,8 @@ const siteTitle = 'RBK Strategies';
 // Only append site name if title doesn't already include it (avoids redundancy)
 const fullTitle = title.includes(siteTitle) ? title : `${title} | ${siteTitle}`;
 const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).href;
+// Convert relative og:image to absolute URL for social platforms
+const ogImageURL = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astro.site).href;
 
 // Google Analytics
 const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
@@ -77,7 +79,7 @@ const structuredData = {
       "@id": `${Astro.site}#localbusiness`,
       "name": "RBK Strategies",
       "image": `${Astro.site}og-image.jpg`,
-      "telephone": "+1-XXX-XXX-XXXX",
+      // telephone omitted - no business phone configured
       "email": "contact@rbkstrategies.com",
       "address": {
         "@type": "PostalAddress",
@@ -186,7 +188,7 @@ const structuredData = {
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={ogImageURL} />
     <meta property="og:site_name" content={siteTitle} />
 
     <!-- Twitter -->
@@ -194,7 +196,7 @@ const structuredData = {
     <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={fullTitle} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={ogImage} />
+    <meta property="twitter:image" content={ogImageURL} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

@@ -73,7 +73,7 @@ import Button from '../Button.astro';
         efficiently.
       </p>
       <p class="hero-attribution">
-        with <strong>Rex Kirshner</strong>
+        founded by <a href="https://rexkirshner.com" target="_blank" rel="noopener">Rex Kirshner</a>
       </p>
       <div class="hero-cta">
         <Button href="#contact" variant="secondary" size="lg">Let's Talk</Button>
@@ -185,8 +185,16 @@ import Button from '../Button.astro';
     text-shadow: 0 1px 8px rgba(0, 0, 0, 0.12);
   }
 
-  .hero-attribution strong {
+  .hero-attribution a {
+    color: var(--color-white);
     font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: opacity 0.2s ease;
+  }
+
+  .hero-attribution a:hover {
+    opacity: 0.8;
   }
 
   .hero-cta {

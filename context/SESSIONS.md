@@ -1306,3 +1306,100 @@ Upgraded AI Context System from v3.4.0 to v3.6.0, migrated CLAUDE.md to project 
 
 ---
 
+
+## Session 12 | 2025-12-20 | SEO Audit Implementation
+
+**Duration:** ~3h | **Focus:** Implement SEO audit recommendations for "Rex Kirshner" visibility | **Status:** ✅ Complete
+
+### TL;DR
+Completed comprehensive SEO audit and implemented all P0/P1 fixes to improve "Rex Kirshner" search visibility. Added personal name to title/meta, created standalone Person schema, cleaned up sitemap, fixed og:image URLs, and added LinkedIn company page to footer. Phase 1 & 2 complete, Phase 3 backlogged.
+
+### Accomplishments
+
+- ✅ Created comprehensive SEO audit report (docs/audits/SEO_AUDIT_01.md)
+- ✅ Implemented Phase 1: Title, meta description, sitemap, og:image, phone placeholder fixes
+- ✅ Implemented Phase 2: Standalone Person schema, WebPage author property
+- ✅ Added LinkedIn company page link to footer with location text
+- ✅ Updated audit doc with completion status and commit references
+- ✅ All changes pushed to GitHub (16 commits)
+
+### Problem Solved
+
+**Issue:** RBK Strategies site had weak personal name SEO - "Rex Kirshner" wasn't in title, meta description, or as standalone schema entity.
+
+**Constraints:**
+- Single-page site with limited URL structure
+- Hero section attribution felt "pretentious" to user
+- Needed semantic schema connections without visible clutter
+
+**Approach:** Multi-layered SEO strategy targeting meta, schema, and content:
+1. Title/meta for direct ranking signals
+2. Standalone Person schema for knowledge graph
+3. Cross-references via @id in JSON-LD
+
+**Why this approach:** Google prioritizes structured data and meta tags for personal name queries. The Person schema as first entity in @graph signals priority to crawlers.
+
+### Decisions
+
+- **Hero attribution removed:** User tested several formats ("with Rex Kirshner", "founded by Rex Kirshner", etc.) but all felt pretentious. Decided name visibility in title/meta/schema is sufficient.
+- **Footer redesign:** Replaced "Back to top" link with "Los Angeles, CA" + LinkedIn icon - more useful information.
+- **Title format:** "RBK Strategies - Business Consulting by Rex Kirshner" - business brand first, personal name for search visibility.
+
+### Files
+
+**NEW:**
+- `docs/audits/SEO_AUDIT_01.md` - Comprehensive SEO audit with findings, recommendations, and implementation status
+
+**MOD:**
+- `src/pages/index.astro` - Title and description with "Rex Kirshner"
+- `src/layouts/BaseLayout.astro:40-100` - Standalone Person schema, ogImageURL computed property, removed placeholder phone
+- `src/components/sections/Hero.astro` - Attribution added then removed (user preference)
+- `src/components/Footer.astro` - LinkedIn icon + "Los Angeles, CA" replacing "Back to top"
+- `public/sitemap.xml` - Removed hash fragments, updated lastmod, added image extension
+
+### Mental Models
+
+**Current understanding:**
+JSON-LD @graph architecture connects entities via @id references. Person entity is first in array for priority signaling. WebPage.author references Person@id, Organization.founder references Person@id - creates semantic web of connections.
+
+**Key insights:**
+- Hash fragment URLs (#about, #services) are ignored by Google sitemap protocol
+- og:image MUST be absolute URL for reliable social sharing
+- Person schema needs to be top-level entity, not just nested under Organization
+
+**Gotchas discovered:**
+- Placeholder phone numbers (XXX-XXX-XXXX) trigger Google quality filters
+- Title logic needed `includes()` check to avoid "RBK Strategies | RBK Strategies" redundancy
+
+### Work In Progress
+
+**Task:** None - Phase 1 & 2 complete
+**Status:** Maintenance mode, awaiting Google re-crawl
+
+### TodoWrite State
+
+**Completed:**
+- ✅ Add standalone Person schema to @graph
+- ✅ Add author property to WebPage schema
+- ✅ Add 'Rex Kirshner' to hero section (then removed per user)
+- ✅ Test and verify all Phase 2 changes
+
+### Next Session
+
+**Priority:** Monitor Google Search Console for re-crawl and ranking changes (2-4 weeks)
+**Blockers:** None
+**Phase 3 backlog:** FAQ schema, dedicated /about page, testimonials section, dynamic sitemap
+
+### Git Operations
+
+- **Commits:** 16 commits (from Session 11 work + Session 12 SEO)
+- **Pushed:** YES
+- **Approval:** User said "ok, let's push"
+
+### Tests & Build
+
+- **Tests:** Not run (no test suite)
+- **Build:** ✅ Success (verified after each change)
+- **Coverage:** N/A
+
+---

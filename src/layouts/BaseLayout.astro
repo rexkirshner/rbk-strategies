@@ -36,9 +36,42 @@ const ogImageURL = ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astro
 const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 
 // Structured Data (JSON-LD) for SEO
+// Person entity is first in @graph for visibility in personal name searches
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
+    // Primary Person entity - Rex Kirshner (standalone for personal brand SEO)
+    {
+      "@type": "Person",
+      "@id": `${Astro.site}#person`,
+      "name": "Rex Kirshner",
+      "givenName": "Rex",
+      "familyName": "Kirshner",
+      "jobTitle": "Principal Consultant",
+      "worksFor": {
+        "@id": `${Astro.site}#organization`
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Stanford University"
+      },
+      "url": "https://rexkirshner.com",
+      "image": `${Astro.site}rex-profile.webp`,
+      "sameAs": [
+        "https://rexkirshner.com",
+        "https://www.linkedin.com/in/rexkirshner/",
+        "https://scratchspace.dev"
+      ],
+      "knowsAbout": [
+        "Business Operations",
+        "Financial Consulting",
+        "Technology Consulting",
+        "Blockchain",
+        "Ethereum",
+        "Podcasting"
+      ]
+    },
+    // Organization entity - RBK Strategies
     {
       "@type": "Organization",
       "@id": `${Astro.site}#organization`,
@@ -59,15 +92,7 @@ const structuredData = {
       },
       "email": "contact@rbkstrategies.com",
       "founder": {
-        "@type": "Person",
-        "name": "Rex Kirshner",
-        "jobTitle": "Principal Consultant",
-        "alumniOf": {
-          "@type": "CollegeOrUniversity",
-          "name": "Stanford University"
-        },
-        "url": "https://rexkirshner.com",
-        "sameAs": "https://www.linkedin.com/in/rexkirshner/"
+        "@id": `${Astro.site}#person`
       },
       "sameAs": [
         "https://www.linkedin.com/in/rexkirshner/",
@@ -146,6 +171,9 @@ const structuredData = {
       },
       "about": {
         "@id": `${Astro.site}#organization`
+      },
+      "author": {
+        "@id": `${Astro.site}#person`
       },
       "description": description,
       "inLanguage": "en-US"

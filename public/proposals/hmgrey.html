@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RBK Strategies — Engagement Proposal for hmGrey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #0D1E35;
+      --color-primary-light: #1A2F4A;
+      --color-secondary: #1A4D8A;
+      --color-secondary-light: #2D7DD2;
+      --color-secondary-light-rgb: 45, 125, 210;
+      --color-accent: #F4A261;
+      --color-accent-rgb: 244, 162, 97;
+      --color-text: #1A1A2E;
+      --color-text-light: #4A4A5E;
+      --color-text-muted: #8888A0;
+      --color-bg: #F8F9FA;
+      --color-bg-white: #FFFFFF;
+      --color-border: #D1D5DB;
+      --color-border-light: #E5E7EB;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--color-text);
+      background: var(--color-bg);
+    }
+
+    /* ========================================
+       Hero Header with Circuit Animation
+       ======================================== */
+    .hero {
+      position: relative;
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 50%, var(--color-secondary-light) 100%);
+      overflow: hidden;
+      padding: 80px 48px 60px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(circle at 20% 50%, rgba(var(--color-secondary-light-rgb), 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(var(--color-accent-rgb), 0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .circuit-pattern {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.5;
+    }
+
+    @keyframes nodePulse {
+      0%, 100% { opacity: 0.2; fill: rgba(255, 255, 255, 0.2); }
+      50% { opacity: 1; fill: rgba(255, 255, 255, 0.5); }
+    }
+
+    .node-pulse-1 { animation: nodePulse 2.5s ease-in-out infinite; animation-delay: 0s; }
+    .node-pulse-2 { animation: nodePulse 2.5s ease-in-out infinite; animation-delay: 0.8s; }
+    .node-pulse-3 { animation: nodePulse 2.5s ease-in-out infinite; animation-delay: 1.6s; }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-brand {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 24px;
+    }
+
+    .hero-title {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3), 0 4px 40px rgba(var(--color-secondary-light-rgb), 0.2);
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.6;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.15);
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 32px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta-item {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.5px;
+    }
+
+    .hero-meta-item strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      margin-top: 2px;
+    }
+
+    /* ========================================
+       Body Content
+       ======================================== */
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--color-secondary);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 3px;
+      background: var(--color-accent);
+      border-radius: 2px;
+    }
+
+    .section p {
+      font-size: 15px;
+      color: var(--color-text-light);
+      line-height: 1.75;
+    }
+
+    /* Services Grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .service-item {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--color-border-light);
+      border-right: 1px solid var(--color-border-light);
+    }
+
+    .service-item:nth-child(2n) {
+      border-right: none;
+    }
+
+    .service-item:nth-last-child(-n+2) {
+      border-bottom: none;
+    }
+
+    .service-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 4px;
+    }
+
+    .service-desc {
+      font-size: 13.5px;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+
+    /* Terms Grid */
+    .terms {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0;
+      background: var(--color-primary);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .term-block {
+      padding: 28px 24px;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .term-block:last-child {
+      border-right: none;
+    }
+
+    .term-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 8px;
+    }
+
+    .term-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+
+    .term-detail {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 2px;
+    }
+
+    /* Investment Summary */
+    .investment {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border-light);
+      border-radius: 8px;
+      padding: 28px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .investment-item {
+      text-align: center;
+    }
+
+    .investment-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 4px;
+    }
+
+    .investment-value {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--color-primary);
+    }
+
+    .investment-note {
+      font-size: 12px;
+      color: var(--color-text-muted);
+    }
+
+    .investment-divider {
+      width: 1px;
+      height: 48px;
+      background: var(--color-border);
+    }
+
+    /* Signature */
+    .signatures {
+      display: flex;
+      justify-content: space-between;
+      gap: 48px;
+      margin-top: 56px;
+      padding-top: 32px;
+      border-top: 2px solid var(--color-primary);
+    }
+
+    .sig-block {
+      flex: 1;
+    }
+
+    .sig-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 48px;
+    }
+
+    .sig-line {
+      border-top: 1px solid var(--color-text);
+      padding-top: 8px;
+      width: 240px;
+    }
+
+    .sig-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    .sig-date {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      margin-top: 4px;
+    }
+
+    /* Footer */
+    .footer-bar {
+      background: var(--color-primary);
+      padding: 16px 48px;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.5px;
+    }
+
+    @media print {
+      .hero { padding: 48px; }
+      .content { padding: 32px 48px; }
+    }
+
+    @media (max-width: 640px) {
+      .hero { padding: 48px 24px 40px; }
+      .content { padding: 32px 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .service-item { border-right: none; }
+      .service-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--color-border-light); }
+      .service-item:last-child { border-bottom: none; }
+      .terms { grid-template-columns: 1fr; }
+      .term-block { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+      .term-block:last-child { border-bottom: none; }
+      .investment { flex-direction: column; }
+      .investment-divider { width: 48px; height: 1px; }
+      .signatures { flex-direction: column; gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Header -->
+  <div class="hero">
+    <svg class="circuit-pattern" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+      <line x1="0" y1="120" x2="280" y2="120" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+      <line x1="350" y1="120" x2="600" y2="120" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+      <line x1="0" y1="280" x2="180" y2="280" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <line x1="250" y1="280" x2="450" y2="280" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <line x1="520" y1="280" x2="800" y2="280" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <line x1="200" y1="450" x2="500" y2="450" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+      <line x1="580" y1="450" x2="900" y2="450" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+      <line x1="400" y1="620" x2="700" y2="620" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <line x1="780" y1="620" x2="1200" y2="620" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <line x1="180" y1="0" x2="180" y2="200" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <line x1="180" y1="260" x2="180" y2="450" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <line x1="350" y1="50" x2="350" y2="280" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+      <line x1="500" y1="200" x2="500" y2="500" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <line x1="700" y1="100" x2="700" y2="350" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+      <line x1="700" y1="420" x2="700" y2="700" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+      <line x1="900" y1="250" x2="900" y2="550" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <line x1="1050" y1="0" x2="1050" y2="300" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <line x1="180" y1="280" x2="280" y2="380" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+      <line x1="500" y1="450" x2="620" y2="570" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+      <line x1="700" y1="280" x2="850" y2="430" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+      <circle cx="180" cy="120" r="4" class="node-pulse-1"/>
+      <circle cx="350" cy="120" r="5" class="node-pulse-2"/>
+      <circle cx="180" cy="280" r="4" fill="rgba(255,255,255,0.2)"/>
+      <circle cx="350" cy="280" r="4" class="node-pulse-3"/>
+      <circle cx="500" cy="280" r="5" fill="rgba(255,255,255,0.2)"/>
+      <circle cx="700" cy="280" r="4" class="node-pulse-1"/>
+      <circle cx="500" cy="450" r="5" class="node-pulse-2"/>
+      <circle cx="700" cy="450" r="4" fill="rgba(255,255,255,0.2)"/>
+      <circle cx="900" cy="450" r="4" class="node-pulse-3"/>
+      <circle cx="700" cy="620" r="5" class="node-pulse-1"/>
+      <rect x="270" y="110" width="25" height="25" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" rx="3"/>
+      <rect x="590" y="110" width="30" height="18" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" rx="3"/>
+      <rect x="440" y="270" width="20" height="28" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" rx="3"/>
+      <rect x="870" y="440" width="35" height="22" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" rx="3"/>
+      <rect x="240" y="370" width="22" height="22" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" rx="3"/>
+      <circle cx="280" cy="120" r="2" fill="rgba(255,255,255,0.15)"/>
+      <circle cx="250" cy="280" r="2" fill="rgba(255,255,255,0.15)"/>
+      <circle cx="580" cy="450" r="2" fill="rgba(255,255,255,0.15)"/>
+      <circle cx="780" cy="620" r="2" fill="rgba(255,255,255,0.15)"/>
+    </svg>
+
+    <div class="hero-content">
+      <div class="hero-brand">RBK Strategies</div>
+      <h1 class="hero-title">Engagement Proposal</h1>
+      <p class="hero-subtitle">Strategic consulting and operational support for hmGrey's Duke Energy aerial power line inspection program.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">Prepared for <strong>hmGrey</strong></div>
+        <div class="hero-meta-item">Prepared by <strong>Rex Kirshner</strong></div>
+        <div class="hero-meta-item">Date <strong>March 2026</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="content">
+
+    <div class="section">
+      <div class="section-label">Overview</div>
+      <p>
+        hmGrey is positioning to execute a large-scale aerial inspection program for Duke Energy,
+        deploying proprietary high-resolution imaging and machine learning technology across 1,000+
+        miles of power infrastructure. RBK Strategies will provide strategic consulting and
+        operational support to help hmGrey plan, organize, and execute against this engagement
+        effectively.
+      </p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Services</div>
+      <div class="services-grid">
+        <div class="service-item">
+          <div class="service-name">Strategic Planning</div>
+          <div class="service-desc">Program roadmap, milestone definition, and execution strategy</div>
+        </div>
+        <div class="service-item">
+          <div class="service-name">Project Management</div>
+          <div class="service-desc">Workstream coordination, timeline tracking, and resource planning</div>
+        </div>
+        <div class="service-item">
+          <div class="service-name">Bid &amp; Proposal Support</div>
+          <div class="service-desc">Structuring deliverables, pricing strategy, and client-facing materials</div>
+        </div>
+        <div class="service-item">
+          <div class="service-name">Operational Design</div>
+          <div class="service-desc">Workflow design for flight campaigns, data handling, and reporting</div>
+        </div>
+        <div class="service-item">
+          <div class="service-name">Technology &amp; Automation</div>
+          <div class="service-desc">AI-assisted tooling for business operations, data pipelines, and dashboards</div>
+        </div>
+        <div class="service-item">
+          <div class="service-name">Opportunity Analysis</div>
+          <div class="service-desc">Market assessment, growth strategy, and partnership evaluation</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Terms</div>
+      <div class="terms">
+        <div class="term-block">
+          <div class="term-label">Rate</div>
+          <div class="term-value">$300</div>
+          <div class="term-detail">per hour</div>
+        </div>
+        <div class="term-block">
+          <div class="term-label">Commitment</div>
+          <div class="term-value">15 hrs</div>
+          <div class="term-detail">per week</div>
+        </div>
+        <div class="term-block">
+          <div class="term-label">Duration</div>
+          <div class="term-value">3 months</div>
+          <div class="term-detail">starting [TBD]</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Investment Summary</div>
+      <div class="investment">
+        <div class="investment-item">
+          <div class="investment-label">Monthly</div>
+          <div class="investment-value">$18,000</div>
+          <div class="investment-note">~60 hours/month</div>
+        </div>
+        <div class="investment-divider"></div>
+        <div class="investment-item">
+          <div class="investment-label">Total Engagement</div>
+          <div class="investment-value">$54,000</div>
+          <div class="investment-note">3-month term</div>
+        </div>
+        <div class="investment-divider"></div>
+        <div class="investment-item">
+          <div class="investment-label">Billing</div>
+          <div class="investment-value">Monthly</div>
+          <div class="investment-note">Actual hours worked</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="signatures">
+      <div class="sig-block">
+        <div class="sig-label">RBK Strategies</div>
+        <div class="sig-line">
+          <div class="sig-name">Rex Kirshner</div>
+          <div class="sig-date">Date: _______________</div>
+        </div>
+      </div>
+      <div class="sig-block">
+        <div class="sig-label">hmGrey</div>
+        <div class="sig-line">
+          <div class="sig-name">___________________________</div>
+          <div class="sig-date">Date: _______________</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bar">
+    rbkstrategies.com
+  </div>
+
+</body>
+</html>

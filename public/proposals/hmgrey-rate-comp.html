@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RBK Strategies — Rate Benchmarking Research</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #0D1E35;
+      --color-primary-light: #1A2F4A;
+      --color-secondary: #1A4D8A;
+      --color-secondary-light: #2D7DD2;
+      --color-secondary-light-rgb: 45, 125, 210;
+      --color-accent: #F4A261;
+      --color-accent-rgb: 244, 162, 97;
+      --color-text: #1A1A2E;
+      --color-text-light: #4A4A5E;
+      --color-text-muted: #8888A0;
+      --color-bg: #F8F9FA;
+      --color-bg-white: #FFFFFF;
+      --color-border: #D1D5DB;
+      --color-border-light: #E5E7EB;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--color-text);
+      background: var(--color-bg);
+    }
+
+    /* ========================================
+       Hero Header with Circuit Animation
+       ======================================== */
+    .hero {
+      position: relative;
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 50%, var(--color-secondary-light) 100%);
+      overflow: hidden;
+      padding: 80px 48px 60px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(circle at 20% 50%, rgba(var(--color-secondary-light-rgb), 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(var(--color-accent-rgb), 0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .circuit-pattern {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.5;
+    }
+
+    @keyframes nodePulse {
+      0%, 100% { opacity: 0.2; fill: rgba(255, 255, 255, 0.2); }
+      50% { opacity: 1; fill: rgba(255, 255, 255, 0.5); }
+    }
+
+    .node-pulse-1 { animation: nodePulse 2.5s ease-in-out infinite; animation-delay: 0s; }
+    .node-pulse-2 { animation: nodePulse 2.5s ease-in-out infinite; animation-delay: 0.8s; }
+    .node-pulse-3 { animation: nodePulse 2.5s ease-in-out infinite; animation-delay: 1.6s; }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-brand {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 24px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.7);
+      margin-left: 16px;
+      vertical-align: middle;
+    }
+
+    .hero-title {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3), 0 4px 40px rgba(var(--color-secondary-light-rgb), 0.2);
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.6;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.15);
+    }
+
+    /* ========================================
+       Body Content
+       ======================================== */
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--color-secondary);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 3px;
+      background: var(--color-accent);
+      border-radius: 2px;
+    }
+
+    .section p {
+      font-size: 15px;
+      color: var(--color-text-light);
+      line-height: 1.75;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+
+    th {
+      text-align: left;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      padding: 12px 16px;
+      border-bottom: 2px solid var(--color-border);
+      background: var(--color-bg);
+    }
+
+    td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--color-border-light);
+      color: var(--color-text-light);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    td:first-child {
+      font-weight: 500;
+      color: var(--color-text);
+    }
+
+    /* Tags */
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 3px 10px;
+      border-radius: 4px;
+      margin-right: 6px;
+    }
+
+    .tag-green { background: #E6F4EA; color: #137333; }
+    .tag-blue { background: #E8F0FE; color: #1A56DB; }
+
+    /* Callout */
+    .callout {
+      background: var(--color-primary);
+      border-radius: 8px;
+      padding: 28px 32px;
+      margin-top: 24px;
+    }
+
+    .callout-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 12px;
+    }
+
+    .callout p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.75;
+    }
+
+    /* Sources */
+    .sources {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--color-border-light);
+    }
+
+    .sources ol {
+      padding-left: 20px;
+    }
+
+    .sources li {
+      font-size: 12.5px;
+      color: var(--color-text-muted);
+      margin-bottom: 4px;
+      line-height: 1.6;
+    }
+
+    .sources a {
+      color: var(--color-secondary);
+      text-decoration: none;
+    }
+
+    .sources a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    .footer-bar {
+      background: var(--color-primary);
+      padding: 16px 48px;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.5px;
+    }
+
+    @media print {
+      .hero { padding: 48px; }
+      .content { padding: 32px 48px; }
+    }
+
+    @media (max-width: 640px) {
+      .hero { padding: 48px 24px 40px; }
+      .content { padding: 32px 24px; }
+      table { font-size: 13px; }
+      th, td { padding: 10px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Header -->
+  <div class="hero">
+    <svg class="circuit-pattern" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+      <line x1="0" y1="120" x2="280" y2="120" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+      <line x1="350" y1="120" x2="600" y2="120" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+      <line x1="0" y1="280" x2="180" y2="280" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <line x1="250" y1="280" x2="450" y2="280" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <line x1="520" y1="280" x2="800" y2="280" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <line x1="200" y1="450" x2="500" y2="450" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+      <line x1="580" y1="450" x2="900" y2="450" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+      <line x1="400" y1="620" x2="700" y2="620" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <line x1="780" y1="620" x2="1200" y2="620" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <line x1="180" y1="0" x2="180" y2="200" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <line x1="180" y1="260" x2="180" y2="450" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <line x1="350" y1="50" x2="350" y2="280" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+      <line x1="500" y1="200" x2="500" y2="500" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <line x1="700" y1="100" x2="700" y2="350" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+      <line x1="700" y1="420" x2="700" y2="700" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+      <line x1="900" y1="250" x2="900" y2="550" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <line x1="1050" y1="0" x2="1050" y2="300" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+      <line x1="180" y1="280" x2="280" y2="380" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+      <line x1="500" y1="450" x2="620" y2="570" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+      <line x1="700" y1="280" x2="850" y2="430" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+      <circle cx="180" cy="120" r="4" class="node-pulse-1"/>
+      <circle cx="350" cy="120" r="5" class="node-pulse-2"/>
+      <circle cx="180" cy="280" r="4" fill="rgba(255,255,255,0.2)"/>
+      <circle cx="350" cy="280" r="4" class="node-pulse-3"/>
+      <circle cx="500" cy="280" r="5" fill="rgba(255,255,255,0.2)"/>
+      <circle cx="700" cy="280" r="4" class="node-pulse-1"/>
+      <circle cx="500" cy="450" r="5" class="node-pulse-2"/>
+      <circle cx="700" cy="450" r="4" fill="rgba(255,255,255,0.2)"/>
+      <circle cx="900" cy="450" r="4" class="node-pulse-3"/>
+      <circle cx="700" cy="620" r="5" class="node-pulse-1"/>
+      <rect x="270" y="110" width="25" height="25" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" rx="3"/>
+      <rect x="590" y="110" width="30" height="18" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" rx="3"/>
+      <rect x="440" y="270" width="20" height="28" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" rx="3"/>
+      <rect x="870" y="440" width="35" height="22" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" rx="3"/>
+      <rect x="240" y="370" width="22" height="22" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" rx="3"/>
+      <circle cx="280" cy="120" r="2" fill="rgba(255,255,255,0.15)"/>
+      <circle cx="250" cy="280" r="2" fill="rgba(255,255,255,0.15)"/>
+      <circle cx="580" cy="450" r="2" fill="rgba(255,255,255,0.15)"/>
+      <circle cx="780" cy="620" r="2" fill="rgba(255,255,255,0.15)"/>
+    </svg>
+
+    <div class="hero-content">
+      <div class="hero-brand">RBK Strategies <span class="hero-tag">Internal Reference</span></div>
+      <h1 class="hero-title">Rate Benchmarking</h1>
+      <p class="hero-subtitle">Market research supporting hourly rate positioning for the hmGrey engagement. Prepared March 2026.</p>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="content">
+
+    <div class="section">
+      <div class="section-label">Independent Strategy Consulting — General Market</div>
+      <table>
+        <tr><th>Tier</th><th>Hourly Rate</th><th>Profile</th></tr>
+        <tr><td>Entry / Generalist</td><td>$75 &ndash; $150</td><td>New independents, broad generalists</td></tr>
+        <tr><td>Mid-level Expert</td><td>$150 &ndash; $300</td><td>Experienced independents with domain expertise</td></tr>
+        <tr><td>Senior Specialist</td><td>$300 &ndash; $500</td><td>Deep subject-matter experts, former executives</td></tr>
+        <tr><td>Elite / C-level Advisory</td><td>$500 &ndash; $1,000+</td><td>C-suite advisors, former partners</td></tr>
+        <tr><td>Big 4 / MBB Firms</td><td>$350 &ndash; $1,500+</td><td>McKinsey senior partners bill ~$1,194/hr</td></tr>
+      </table>
+      <p>
+        39% of independent consultants charge between $100&ndash;$250/hour. The average freelance
+        management consultant rate is approximately $190/hour.
+      </p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Technical / AI Background Premium</div>
+      <table>
+        <tr><th>Segment</th><th>Hourly Rate</th></tr>
+        <tr><td>General IT / tech consultants</td><td>$150 &ndash; $300</td></tr>
+        <tr><td>AI/ML consultants (junior)</td><td>$100 &ndash; $150</td></tr>
+        <tr><td>AI/ML consultants (senior)</td><td>$200 &ndash; $400</td></tr>
+        <tr><td>Top-tier AI specialists</td><td>$300 &ndash; $500+</td></tr>
+      </table>
+      <p>
+        A technical background (software engineering, AI/ML) is a meaningful differentiator
+        that justifies rates in the $250&ndash;$400 range for business consulting roles.
+        Generative AI and niche ML expertise can add a 20&ndash;30% premium.
+      </p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Energy / Utilities Industry</div>
+      <table>
+        <tr><th>Metric</th><th>Value</th></tr>
+        <tr><td>General energy consultants</td><td>$75 &ndash; $300/hr</td></tr>
+        <tr><td>Utilities-sector median (IEEE 2025)</td><td>$200 &ndash; $250/hr</td></tr>
+        <tr><td>US Energy &amp; Utility Consulting market (2025)</td><td>$7.3 billion</td></tr>
+      </table>
+      <p>
+        The utilities sector pays at the higher end of the consulting spectrum due to regulatory
+        complexity and critical infrastructure stakes. The IEEE 2025 Consultants Fee Survey
+        reports median rates of $235/hr in the Mountain region and $250/hr in the South Atlantic.
+      </p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Project Management + Strategy Hybrid</div>
+      <p>
+        Pure project management consultants typically range from $100&ndash;$250/hour.
+        Strategy consultants range from $150&ndash;$500/hour. The combination of both
+        commands a premium over either alone &mdash; the overlap positions naturally
+        in the $250&ndash;$400 range.
+      </p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Drone / Aerial Infrastructure Inspection</div>
+      <table>
+        <tr><th>Service Type</th><th>Hourly Rate</th></tr>
+        <tr><td>Basic drone inspections</td><td>$150 &ndash; $300</td></tr>
+        <tr><td>Thermal / infrared inspections</td><td>$300 &ndash; $700</td></tr>
+        <tr><td>Industrial / utility inspections</td><td>$500 &ndash; $2,000+</td></tr>
+        <tr><td>Day rates</td><td>$1,000 &ndash; $3,000/day</td></tr>
+      </table>
+      <p>
+        The drone infrastructure inspection market is estimated at $2.5B in 2025, growing at
+        15% CAGR to $8B by 2033. Strategic consulting on inspection programs would justify
+        $300&ndash;$500/hr given the niche expertise required.
+      </p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Rate Positioning Summary</div>
+      <table>
+        <tr><th>Context</th><th>$300/hr Position</th></tr>
+        <tr><td>General independent strategy consulting</td><td><span class="tag tag-green">Competitive</span> Top of mid-tier</td></tr>
+        <tr><td>Tech/AI background &rarr; business consulting</td><td><span class="tag tag-green">Moderate</span> Well within range</td></tr>
+        <tr><td>Energy / utilities sector</td><td><span class="tag tag-green">Strong</span> Above median, justified</td></tr>
+        <tr><td>PM + strategy hybrid</td><td><span class="tag tag-green">Well-positioned</span> Natural sweet spot</td></tr>
+        <tr><td>Drone / infrastructure inspection</td><td><span class="tag tag-blue">Conservative</span> Niche commands $300&ndash;$500+</td></tr>
+      </table>
+
+      <div class="callout">
+        <div class="callout-title">Conclusion</div>
+        <p>
+          At $300/hour, RBK Strategies is positioned at the intersection of experienced independent
+          consultant and specialist &mdash; justified by the combination of a Stanford CS background,
+          AI/technology capability, energy sector focus, and the niche nature of aerial infrastructure
+          inspection programs. This rate is competitive within every relevant benchmark category and
+          conservative in the drone/inspection niche specifically.
+        </p>
+      </div>
+    </div>
+
+    <div class="sources">
+      <div class="section-label">Sources</div>
+      <ol>
+        <li><a href="https://www.melisaliberman.com/blog/consulting-statistics">Consulting Statistics 2025 &mdash; Melisa Liberman</a></li>
+        <li><a href="https://www.payscale.com/research/US/Job=Independent_Consultant/Hourly_Rate">Independent Consultant Hourly Pay 2026 &mdash; PayScale</a></li>
+        <li><a href="https://www.consultingsuccess.com/consulting-fees">Consulting Fees Guide &mdash; Consulting Success</a></li>
+        <li><a href="https://www.consultingsuccess.com/consulting-statistics">54 Consulting Statistics for 2025 &mdash; Consulting Success</a></li>
+        <li><a href="https://stack.expert/blog/ai-consultant-salary-pricing-guide-for-2025">AI Consultant Salary &amp; Pricing Guide 2025 &mdash; Stack</a></li>
+        <li><a href="https://www.orientsoftware.com/blog/ai-consultant-hourly-rate/">AI Consulting Rates Breakdown &mdash; Orient Software</a></li>
+        <li><a href="https://www.payscale.com/research/US/Industry=Energy_Consulting/Hourly_Rate">Energy Consulting Hourly Rate &mdash; PayScale</a></li>
+        <li><a href="https://www.ibisworld.com/united-states/industry/energy-utility-consulting-services/6132/">Energy &amp; Utility Consulting Services US &mdash; IBISWorld</a></li>
+        <li><a href="https://insight.ieeeusa.org/articles/2025-ieee-usa-consultants-fee-survey-report-now-available/">2025 IEEE-USA Consultants Fee Survey Report</a></li>
+        <li><a href="https://www.ocmsolution.com/project-management-fees/">Project Management Fees &amp; Rates &mdash; OCM Solution</a></li>
+        <li><a href="https://www.thedroneu.com/blog/drone-service-cost-guide/">Drone Service Cost Guide 2026 &mdash; The Drone U</a></li>
+        <li><a href="https://www.dronepilotgroundschool.com/drone-services-pricing/">Drone Services Pricing Guide &mdash; Drone Pilot Ground School</a></li>
+        <li><a href="https://slideworks.io/resources/management-consulting-fees-how-mc-kinsey-prices-projects">Management Consulting Fees: McKinsey Pricing &mdash; Slideworks</a></li>
+        <li><a href="https://nmsconsulting.com/consulting-fees-and-pricing-in-2026/">Consulting Fees and Pricing 2026 &mdash; NMS Consulting</a></li>
+        <li><a href="https://www.marketsandmarkets.com/Market-Reports/drone-inspection-monitoring-market-99915267.html">Drone Inspection and Monitoring Market &mdash; MarketsandMarkets</a></li>
+      </ol>
+    </div>
+
+  </div>
+
+  <div class="footer-bar">
+    rbkstrategies.com
+  </div>
+
+</body>
+</html>
